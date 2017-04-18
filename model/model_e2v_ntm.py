@@ -2,17 +2,17 @@
 import os
 from keras.models import Model
 from keras.layers import Input
+from keras.layers.merge import Merge
 from keras.layers.core import *
 from keras.layers.embeddings import *
-from model.layers import *
-from data import DataProvider
+from model.model.layers import *
+from model.data import DataProvider
 from keras.callbacks import ModelCheckpoint
-from model.callbacks import *
+from model.model.callbacks import *
 import numpy as np
-from config import Config
+from model.config import Config
 from keras.optimizers import *
 import numpy as np
-import theano
 import sys
 import tensorflow as tf
 

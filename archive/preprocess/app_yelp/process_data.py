@@ -1,14 +1,16 @@
 import json
 import os
 
-from util.text_process import TextProcess
+from archive.preprocess.util.text_process import TextProcess
 
+# home = os.environ["HOME"]
 home = os.environ["HOME"]
-path = "".join((home, "/data/yelp/review.json"))
-path_processed = "".join((home, "/data/yelp/review_processed_rest_interestword_Jan7_alltrue2.txt"))
-path_pretraining = "".join((home, "/data/glove/glove.processed.twitter.27B.200d.txt"))
 
-filter_rest = True
+path = "".join((home, "/Data/yelp/output/review_restaurant.json"))
+path_processed_output = "".join((home, "/Data/yelp/output/review_processed_rest_interestword_20170418.txt"))
+path_pretraining = "".join((home, "/Data/glove/glove.twitter.27B.200d.txt"))
+
+filter_rest = False
 prods = set()
 prod_tag = {}
 if filter_rest:
@@ -18,19 +20,19 @@ if filter_rest:
         obj = json.loads(line)
         business_id = str(obj["business_id"])
         categories = obj["categories"]
-        if "Restaurants" in categories:
+        if "Restaurants" in categories or "Food" in categories:
             prods.add(business_id)
             if not business_id in prod_tag:
                 prod_tag[business_id] = set()
             for category in categories:
-                if "Restaurants" != category:
+                if "Restaurants" != category and "Food" != category:
                     prod_tag[business_id].add(category.replace(" ",""))
 
 
 
 TextProcess.initiliaze(path_pretraining)
 f = open(path, "r")
-f_processed = open(path_processed, "w")
+f_processed = open(path_processed_output, "w")
 batch = ""
 for line in f:
     obj = json.loads(line)

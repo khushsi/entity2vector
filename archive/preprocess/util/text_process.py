@@ -1,6 +1,6 @@
 from nltk.tokenize import TweetTokenizer, sent_tokenize
 from nltk.corpus import stopwords
-from util.porter_stemmer import PorterStemmer
+from archive.preprocess.util.porter_stemmer import PorterStemmer
 import nltk
 import os
 
@@ -97,7 +97,7 @@ class TextProcess:
 if __name__ == '__main__':
     import os
     home = os.environ["HOME"]
-    path_pretraining = "".join((home, "/data/glove/glove.processed.twitter.27B.200d.txt"))
+    path_pretraining = "".join((home, "/data/glove/glove.twitter.27B.200d.txt"))
     TextProcess.initiliaze(path_pretraining)
     print("init")
     print(TextProcess.process("i eat djias but i do not like chicken"))

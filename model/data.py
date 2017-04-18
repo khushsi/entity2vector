@@ -3,7 +3,7 @@ import numpy as np
 import random as rd
 from scipy.sparse import *
 from scipy.io import mmread, mmwrite
-from config import *
+from model.config import *
 import threading
 
 

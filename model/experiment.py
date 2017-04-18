@@ -16,8 +16,8 @@ import json
 from collections import OrderedDict
 import time
 import datetime
-from data import DataProvider
-from config import Config
+from model.data import DataProvider
+from model.config import Config
 
 home = os.environ["HOME"]
 

@@ -2,34 +2,62 @@
 
 import json
 import os
-home = os.environ["HOME"]
+home = os.environ["HOME"] +'/Data/yelp/'
+# home = '/home/memray/Data/yelp/'
 
-if False: #check category list
-    f = open("".join([home, "/data/yelp/business.json"]),"r")
-    categories_set = set()
+do_checking = True
+do_export = True
+
+if do_checking: #check category list
+    # f = open("".join([home, "/data/yelp/business.json"]),"r")
+    f = open("".join([home, "/yelp_academic_dataset_business.json"]),"r")
+    categories_dict = {}
+    interested_business_id = set()
     for line in f:
         obj = json.loads(line)
         business_id = obj["business_id"]
         categories = obj["categories"]
+
+        if categories == None:
+            continue
+
+        keep_tags = ["Restaurants", "Food"]
+        should_filter = True
+        for tag in keep_tags:
+            if tag in categories:
+                should_filter = False
+        if should_filter:
+            continue
+
+        interested_business_id.add(business_id)
         for category in categories:
-            categories_set.add(category)
+            if category in categories_dict:
+                categories_dict[category] += 1
+            else:
+                categories_dict[category] = 1
 
-    for category in categories_set:
-        print(category)
+    categories_items = sorted(categories_dict.items(), key=lambda i:i[1], reverse=True)
+    for id, (category, freq) in enumerate(categories_items):
+        print('[%d]%s:%d' % (id, category, freq))
+    print('Found %d categories' % len(categories_items))
+    print('Found %d businesses' % len(interested_business_id))
 
-if True: #only generate Restaurants
-    f = open("".join([home, "/data/yelp/business.json"]),"r")
+
+if do_export: #only generate Restaurants
+    f = open("".join([home, "/yelp_academic_dataset_business.json"]),"r")
     interested_business_id = set()
 
     for line in f:
         obj = json.loads(line)
         business_id = obj["business_id"]
         categories = obj["categories"]
-        if "Restaurants" in categories:
+        if categories == None:
+            continue
+        if "Restaurants" in categories or "Food" in categories:
             interested_business_id.add(business_id)
 
-    f = open("".join([home, "/data/yelp/review.json"]),"r")
-    fu = open("".join([home, "/data/yelp/review_rest.json"]),"w")
+    f = open("".join([home, "yelp_academic_dataset_review.json"]),"r")
+    fu = open("".join([home, "output/review_restaurant.json"]),"w")
     nline = ""
     ncount = 0
     for line in f:
@@ -39,10 +67,9 @@ if True: #only generate Restaurants
         if business_id in interested_business_id:
             nline = "".join((nline,line))
         ncount += 1
-        if ncount >= 10000:
+        if ncount % 10000 == 0:
             fu.write(nline)
             print(ncount)
-            ncount = 0
             nline = ""
     fu.write(nline)
     fu.close()
