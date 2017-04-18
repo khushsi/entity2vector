@@ -2,51 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="747f4ef7-b06c-4f0d-ad1d-516743812575" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/entity2vector.iml" afterPath="$PROJECT_DIR$/.idea/entity2vector.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/data.py" afterPath="$PROJECT_DIR$/archive/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/preprocess/app_yelp/process_data.py" afterPath="$PROJECT_DIR$/archive/preprocess/app_yelp/process_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/preprocess/util/text_process.py" afterPath="$PROJECT_DIR$/archive/preprocess/util/text_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/args.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/args.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/args.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/args.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/dictionary.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/dictionary.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/dictionary.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/dictionary.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/fasttext.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/fasttext.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/fasttext.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/fasttext.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/main.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/main.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/matrix.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/matrix.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/matrix.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/matrix.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/model.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/model.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/model.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/model.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/real.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/real.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/utils.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/utils.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/utils.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/utils.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/vector.cc" afterPath="$PROJECT_DIR$/archive/train/fast_text/vector.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/fast_text/vector.h" afterPath="$PROJECT_DIR$/archive/train/fast_text/vector.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train/src/real.h" afterPath="$PROJECT_DIR$/archive/train/src/real.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/args.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/args.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/args.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/args.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/dictionary.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/dictionary.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/dictionary.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/dictionary.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/fasttext.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/fasttext.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/fasttext.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/fasttext.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/main.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/main.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/matrix.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/matrix.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/matrix.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/matrix.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/model.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/model.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/model.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/model.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/real.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/real.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/utils.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/utils.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/utils.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/utils.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/vector.cc" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/vector.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/fast_text/vector.h" afterPath="$PROJECT_DIR$/archive/train_backup/fast_text/vector.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/train_backup/src/real.h" afterPath="$PROJECT_DIR$/archive/train_backup/src/real.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/data.py" afterPath="$PROJECT_DIR$/model/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/experiment.py" afterPath="$PROJECT_DIR$/model/experiment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/model_e2v_ntm.py" afterPath="$PROJECT_DIR$/model/model_e2v_ntm.py" />
     </list>
     <ignored path="entity2vector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -284,7 +240,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
@@ -595,6 +551,14 @@
       <option name="presentableId" value="Default" />
       <updated>1470447205135</updated>
     </task>
+    <task id="LOCAL-00001" summary="localize the code">
+      <created>1492545967046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1492545967046</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -634,6 +598,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="localize the code" />
+    <option name="LAST_COMMIT_MESSAGE" value="localize the code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
