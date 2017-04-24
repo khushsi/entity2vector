@@ -14,26 +14,27 @@ class Config:
             self.train_type = TrainType.train_tag
         self.flag = flag
         # for data
-        self.path_data = "".join([home, "/data/yelp/review_processed_rest_interestword_DEC22.txt"])
+        self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_DEC22.txt"])
         # self.path_data = "".join([home, "/data/yelp/sample.txt"])
-        self.path_embed = "".join([home, "/data/glove/glove.processed.840B.300d.txt"])
-        self.path_raw_data = "".join([home, "/data/yelp/review.json"])
+        # self.path_embed = "".join([home, "/Data/glove/glove.processed.840B.300d.txt"])
+        self.path_embed = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
+        self.path_raw_data = "".join([home, "/Data/yelp/review.json"])
 
-        self.dim_word = 300
+        self.dim_word = 200
         self.dim_item = dim_item
 
         self.neg_trials = 100
 
         # for model
-        self.path_weight = "".join([home, "/data/model/chk_",self.flag , "/weight"])
+        self.path_weight = "".join([home, "/Data/yelp/model/chk_",self.flag , "/weight"])
         if not os.path.exists(os.path.dirname(self.path_weight)):
-            os.mkdir(os.path.dirname(self.path_weight))
-        self.path_checker = "".join([home, "/data/model/chk_",self.flag, "/checkpointweights.hdf5"])
+            os.makedirs(os.path.dirname(self.path_weight))
+        self.path_checker = "".join([home, "/Data/yelp/model/chk_",self.flag, "/checkpointweights.hdf5"])
         if not os.path.exists(os.path.dirname(self.path_checker)):
-            os.mkdir(os.path.dirname(self.path_checker))
-        self.path_npy = "".join([home, "/data/model/npy/"])
+            os.makedirs(os.path.dirname(self.path_checker))
+        self.path_npy = "".join([home, "/Data/yelp/model/npy/"])
         if not os.path.exists(os.path.dirname(self.path_npy)):
-            os.mkdir(os.path.dirname(self.path_npy))
+            os.makedirs(os.path.dirname(self.path_npy))
         self.batch_size = 117200
         self.n_epoch = 500
         self.sample_per_epoch = 19135900
@@ -41,23 +42,23 @@ class Config:
         # for framework
         theano.config.openmp = False
         # for save
-        self.path_doc_npy = "".join([home, "/data/model/chk_",self.flag,"/doc"])
-        self.path_word_npy = "".join([home, "/data/model/chk_",self.flag,"/word"])
-        self.path_model_npy = "".join([home, "/data/model/chk_",self.flag,"/model"])
-        self.path_doc_w2c = "".join([home, "/data/model/chk_",self.flag,"/doc.txt"])
-        self.path_word_w2c = "".join([home, "/data/model/chk_",self.flag,"/word.txt"])
+        self.path_doc_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/doc"])
+        self.path_word_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/word"])
+        self.path_model_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/model"])
+        self.path_doc_w2c = "".join([home, "/Data/yelp/model/chk_",self.flag,"/doc.txt"])
+        self.path_word_w2c = "".join([home, "/Data/yelp/model/chk_",self.flag,"/word.txt"])
         if not os.path.exists(os.path.dirname(self.path_doc_npy)):
-            os.mkdir(os.path.dirname(self.path_doc_npy))
+            os.makedirs(os.path.dirname(self.path_doc_npy))
         if not os.path.exists(os.path.dirname(self.path_word_npy)):
-            os.mkdir(os.path.dirname(self.path_word_npy))
+            os.makedirs(os.path.dirname(self.path_word_npy))
         if not os.path.exists(os.path.dirname(self.path_model_npy)):
-            os.mkdir(os.path.dirname(self.path_model_npy))
+            os.makedirs(os.path.dirname(self.path_model_npy))
         if not os.path.exists(os.path.dirname(self.path_doc_w2c)):
             os.mkdir(os.path.dirname(self.path_doc_w2c))
         if not os.path.exists(os.path.dirname(self.path_word_w2c)):
             os.mkdir(os.path.dirname(self.path_word_w2c))
 
-        self.path_logs = "".join([home, "/data/model/log/", self.flag, ".log"])
+        self.path_logs = "".join([home, "/Data/yelp/model/log/", self.flag, ".log"])
         if not os.path.exists(os.path.dirname(self.path_logs)):
             os.mkdir(os.path.dirname(self.path_logs))
 

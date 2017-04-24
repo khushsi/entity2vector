@@ -2,7 +2,8 @@
 import os
 from keras.models import Model
 from keras.layers import Input
-from keras.layers.merge import Merge
+from keras.layers import Merge
+from keras.layers.merge import dot, concatenate
 from keras.layers.core import *
 from keras.layers.embeddings import *
 from model.model.layers import *
@@ -65,22 +66,25 @@ word_embed_ = word_embed(word_input)
 item_pos_embed_ = item_embed(item_pos_input)
 item_neg_embed_ = item_embed(item_neg_input)
 
-word_flatten = Flatten()
-word_embed_ = word_flatten(word_embed_)
+# word_flatten = Flatten()
+word_embed_ = Flatten()(word_embed_)
 word_embed_ = Dense(activation="sigmoid", output_dim=conf.dim_item, input_dim=conf.dim_word, trainable=True,
                     weights=[word_transfer_W, word_transfer_b], name="word_transfer")(word_embed_)
 
-item_pos_embed_ = Flatten()(item_pos_embed_)
-item_neg_embed_ = Flatten()(item_neg_embed_)
-item_pos_embed_ = Activation(activation="softmax", name="item_pos_act")(item_pos_embed_)
+item_pos_embed_ = Reshape((conf.dim_item,))(Flatten()(item_pos_embed_))
+item_neg_embed_ = Reshape((conf.dim_item,))(Flatten()(item_neg_embed_))
+item_pos_embed_ = Activation(activation="softmax", name="item_pos_act", input_shape=item_pos_embed_.shape)(item_pos_embed_)
 item_neg_embed_ = Activation(activation="softmax", name="item_neg_act")(item_neg_embed_)
 
-pos_layer = Merge(mode="dot", dot_axes=-1, name="pos_layer")
-pos_layer_ = pos_layer([word_embed_, item_pos_embed_])
-neg_layer = Merge(mode="dot", dot_axes=-1, name="neg_layer")
-neg_layer_ = neg_layer([word_embed_, item_neg_embed_])
-merge_layer = Merge(mode="concat", concat_axis=-1, name="merge_layer")
-merge_layer_ = merge_layer([pos_layer_, neg_layer_])
+# pos_layer = Merge(mode="dot", dot_axes=-1, name="pos_layer")
+# pos_layer_ = pos_layer([word_embed_, item_pos_embed_])
+pos_layer_ = dot([word_embed_, item_pos_embed_], axes=-1, normalize=False, name="pos_layer")
+# neg_layer = Merge(mode="dot", dot_axes=-1, name="neg_layer")
+# neg_layer_ = neg_layer([word_embed_, item_neg_embed_])
+neg_layer_ = dot([word_embed_, item_neg_embed_], axes=-1, normalize=False, name="neg_layer")
+# merge_layer = Merge(mode="concat", concat_axis=-1, name="merge_layer")
+# merge_layer_ = merge_layer([pos_layer_, neg_layer_])
+merge_layer_ = concatenate([pos_layer_, neg_layer_], axis=-1, name="merge_layer")
 
 # move the margin loss into loss function rather than merge layer
 # merge_layer = Merge(mode=lambda x: 0.5 - x[0] + x[1], output_shape=[1], name="merge_layer")

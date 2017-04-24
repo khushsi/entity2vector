@@ -41,25 +41,30 @@ class DataProvider:
             if len(items) != 3:
                 continue
 
+            # business id
             prod = items[0]
             if prod not in self.prod2idx:
                 self.prod2idx[prod] = len(self.idx2prod)
                 self.idx2prod.append(prod)
 
+            # categories, delimited by space
             tags = items[1]
             for tag in tags.split():
                 if tag not in self.tag2idx:
                     self.tag2idx[tag] = len(self.idx2tag)
                     self.idx2tag.append(tag)
 
+            # review text
             words = items[2]
             for word in words.split():
+                # must be in the dict of glove model
                 if word not in self.word2idx and word in self.temp_word_embedding:
                     self.word2idx[word] = len(self.idx2word)
                     self.idx2word.append(word)
 
         print("finish", "process idx")
-        # process cor-occurrence data
+
+        # process co-occurrence data
         self.word_doc_cor_fmatrix = np.full(shape=(len(self.idx2word), len(self.idx2prod)), fill_value=False, dtype=np.bool)
         self.word_tag_cor_fmatrix = np.full(shape=(len(self.idx2word), len(self.idx2tag)), fill_value=False, dtype=np.bool)
         self.doc_tag_cor_fmatrix = np.full(shape=(len(self.idx2prod), len(self.idx2tag)), fill_value=False, dtype=np.bool)
@@ -88,16 +93,20 @@ class DataProvider:
                 if word in self.temp_word_embedding:
                     word_idx = self.word2idx[word]
                     self.word_doc_cor_fmatrix[word_idx, prod_idx] = True
-        print("finish", "cor-occurrence data")
+        print("finish", "co-occurrence data")
 
-        # process web embed
+        # process word embedding
         self.word_embed = np.full(shape=(len(self.word2idx), self.conf.dim_word), fill_value=0, dtype=np.float64)
         for word in self.idx2word:
             word_idx = self.word2idx[word]
             self.word_embed[word_idx,] = self.temp_word_embedding[word]
-        print("finish", "web embed")
+        print("finish", "word embedding")
 
     def process_word_embed(self):
+        '''
+        Load word embedding from an external Glove model
+        :return:
+        '''
         self.temp_word_embedding = {}
         for line in open(self.conf.path_embed, "r", encoding="utf-8"):
             items = line.split()
@@ -115,7 +124,7 @@ class DataProvider:
         np.save("".join([self.conf.path_npy, "doc_tag_cor_fmatrix"]), self.doc_tag_cor_fmatrix)
         # np.save(, self.word_doc_cor_smatrix)
         # mmwrite("".join([self.conf.path_npy, "word_doc_cor_smatrix"]), self.word_doc_cor_smatrix, field="integer")
-        print("finish", "save")
+        print("finish", "saving")
 
     def load(self):
         self.word_embed = np.load("".join([self.conf.path_npy, "word_embed.npy"]))
@@ -127,7 +136,7 @@ class DataProvider:
         self.doc_tag_cor_fmatrix = np.load("".join([self.conf.path_npy, "doc_tag_cor_fmatrix.npy"]))
         # self.word_doc_cor_smatrix = np.load("".join([self.conf.path_npy, "word_doc_cor_smatrix.npy"]))
         # self.word_doc_cor_smatrix = mmread("".join([self.conf.path_npy, "word_doc_cor_smatrix.mtx"])).todok()
-        print("finish","load")
+        print("finish","loading")
 
     def get_item_size(self):
         if self.conf.train_type == TrainType.train_product:

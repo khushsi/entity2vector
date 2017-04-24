@@ -43,7 +43,7 @@ if do_checking: #check category list
     print('Found %d businesses' % len(interested_business_id))
 
 
-if do_export: #only generate Restaurants
+if do_export: #only export reviews for Restaurants, output to "output/review_restaurant.json"
     f = open("".join([home, "/yelp_academic_dataset_business.json"]),"r")
     interested_business_id = set()
 
@@ -57,13 +57,14 @@ if do_export: #only generate Restaurants
             interested_business_id.add(business_id)
 
     f = open("".join([home, "yelp_academic_dataset_review.json"]),"r")
-    fu = open("".join([home, "output/review_restaurant.json"]),"w")
+    fu = open("".join([home, "output/raw_review_restaurant.json"]),"w")
     nline = ""
     ncount = 0
     for line in f:
         obj = json.loads(line)
         business_id = obj["business_id"]
 
+        # if this review is about a business of interest, append it to the output
         if business_id in interested_business_id:
             nline = "".join((nline,line))
         ncount += 1

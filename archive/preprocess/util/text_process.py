@@ -32,6 +32,17 @@ class TextProcess:
 
     @classmethod
     def process_word(cls, word, tag, stem_flag = True, validate_flag = True, pos_filter = True, remove_stop_word = True, only_interested_words = True):
+        '''
+        filter some words based on some heuristics
+        :param word:
+        :param tag:
+        :param stem_flag:
+        :param validate_flag:
+        :param pos_filter:
+        :param remove_stop_word:
+        :param only_interested_words:
+        :return:
+        '''
         if pos_filter and tag not in TextProcess.tag_filter:
             return TextProcess.UNK
         word = word.lower()
@@ -73,7 +84,7 @@ class TextProcess:
     def process(cls, text, pos_filter = False, stem_flag = False, validate_flag = True, remove_stop_word = True, only_interested_words = True):
         text = text.lower().replace("\n"," ").replace("\t"," ").replace("\v"," ")
         text_processed = ""
-        for sent in sent_tokenize(text):
+        for sent in sent_tokenize(text): # sentence segment
             if pos_filter:
                 for pair in nltk.pos_tag(TextProcess.tknzr.tokenize(sent), tagset='universal'):
                     token = pair[0]
@@ -85,6 +96,9 @@ class TextProcess:
                         text_processed = " ".join((text_processed, nword))
                 text_processed = "".join((text_processed,"\v"))
             else:
+                '''
+                remove trivial words (stopwords etc.)
+                '''
                 for word in TextProcess.tknzr.tokenize(sent):
                     nword = TextProcess.process_word(word, None, stem_flag=stem_flag, validate_flag=validate_flag,
                                                                         pos_filter=pos_filter, remove_stop_word=remove_stop_word,

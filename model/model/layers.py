@@ -2,7 +2,7 @@ from keras.layers.core import *
 from keras.layers.embeddings import *
 
 from keras import backend as K
-from keras import initializations, regularizers, constraints
+from keras import initializers, regularizers, constraints
 from keras.engine import Layer
 
 class NormEmbedding(Embedding):
@@ -16,7 +16,7 @@ class NormEmbedding(Embedding):
                  weights=None, dropout=0., **kwargs):
         self.input_dim = input_dim
         self.output_dim = output_dim
-        self.init = initializations.get(init)
+        self.init = initializers.get(init)
         self.input_length = input_length
         self.mask_zero = mask_zero
         self.dropout = dropout
@@ -137,7 +137,7 @@ class SymmetricAutoencoder(Layer):
                  W_regularizer=None, b_regularizer=None, activity_regularizer=None,
                  output_reconstruction=False,
                  W_constraint=None, b_constraint=None, input_dim=None, **kwargs):
-        self.init = initializations.get(init)
+        self.init = initializers.get(init)
         self.activation = activations.get(activation)
         self.reconstruction_activation = activations.get(reconstruction_activation)
         self.output_reconstruction = output_reconstruction
@@ -244,7 +244,7 @@ class DenseNoBias(Layer):
     def __init__(self, output_dim, init='glorot_uniform', activation='linear', weights=None,
                  W_regularizer=None, activity_regularizer=None,
                  W_constraint=None, input_dim=None, **kwargs):
-        self.init = initializations.get(init)
+        self.init = initializers.get(init)
         self.activation = activations.get(activation)
         self.output_dim = output_dim
 
