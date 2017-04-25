@@ -22,7 +22,7 @@ import tensorflow as tf
 
 args = sys.argv
 if len(args) <= 10:
-    args = [args[0], "prodx_sigmoid_softmax", "prod", "200", "5"]
+    args = [args[0], "prodx_sigmoid_softmax.lr=0.01", "prod", "200", "5"]
 print(args)
 flag = args[1]
 n_processer = int(args[4])
@@ -47,8 +47,8 @@ session = tf.Session(config=config)
 K.set_session(session)
 
 # log setting
-import sys
-sys.stdout = open(conf.path_log, "w")
+#import sys
+#sys.stdout = open(conf.path_log, "w")
 
 def build_ntm_model(dp):
     n_terms = len(dp.idx2word)
@@ -112,7 +112,7 @@ def build_ntm_model(dp):
         # loss = K.max(y_pred) + 0 * y_true
         loss = y_pred + 0 * y_true
         return loss
-    model.compile(optimizer=Adam(lr=0.001), loss = {'merge_layer' : ranking_loss, "pos_layer": dummy_loss}, loss_weights=[1, 0])
+    model.compile(optimizer=Adam(lr=0.01), loss = {'merge_layer' : ranking_loss, "pos_layer": dummy_loss}, loss_weights=[1, 0])
 
     print("finish model compiling")
 

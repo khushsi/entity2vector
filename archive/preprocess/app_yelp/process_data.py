@@ -9,7 +9,7 @@ home = os.environ["HOME"]
 # path of input file, the raw review data
 path = "".join((home, "/Data/yelp/output/raw_review_restaurant.json"))
 # path of output file, the review data after pre-processing
-path_processed_output = "".join((home, "/Data/yelp/output/review_processed_rest_interestword_20170418.txt"))
+path_processed_output = "".join((home, "/Data/yelp/output/review_processed_rest_interestword_20170425.txt"))
 # path of pre-trained word embedding model
 path_pretraining = "".join((home, "/Data/glove/glove.twitter.27B.200d.txt"))
 

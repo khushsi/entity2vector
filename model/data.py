@@ -191,6 +191,7 @@ class DataProvider:
         idx_train = 0
 
         while True:
+            # print(batch_count)
             # get a positive sample, as anything in cor_matrix is positive, so just pick up one by one
             if is_val:
                 word_idx = val_set_row[idx_val % val_len]
