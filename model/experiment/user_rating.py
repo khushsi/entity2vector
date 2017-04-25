@@ -31,7 +31,8 @@ class Exp():
 
 
         self.k = k
-        self.data_path = "".join((home, "/data/yelp/review_rest.json"))
+        self.data_path = "".join((home, "/Data/yelp/output/raw_review_restaurant.json"))
+        # generate dataset
         self.train_path = "train80p1.json"
         self.test_path = "test80p1.json"
         self.prod_vector = conf.path_doc_w2c

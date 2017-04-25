@@ -1,5 +1,5 @@
 import os
-from vector_util import vector
+from archive.experiment.vector_util import vector
 
 home = os.environ["HOME"]
 name = "test1"

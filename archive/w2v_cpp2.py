@@ -365,7 +365,7 @@ class W2V_cpp2(W2V_base):
 
 def main():
     #w2v_cpp2 = W2V_cpp2("/home/sanqiang/data/yelp/review_rest.json", "yelp_rest_allalphaword_yelp_mincnt10_win10", prod_sign=True, pos_sign=True)
-    w2v_cpp2 = W2V_cpp2("".join([home, "/data/yelp/review_rest.json"]), "".join([home, "/data/yelp/business.json"]), "yelp_rest_prod_cate",
+    w2v_cpp2 = W2V_cpp2("".join([home, "/Data/yelp/output/raw_review_restaurant.json"]), "".join([home, "/Data/yelp/yelp_academic_dataset_business.json"]), "yelp_rest_prod_cate",
                         pos_sign=True, usr_sign=False, prod_sign=True)
     print("init")
 

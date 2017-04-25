@@ -1,12 +1,12 @@
 from config import Config
-from data import DataProvider
+from model.data import DataProvider
 from gensim.models.word2vec import Word2Vec
 import numpy as np
 import os
 from scipy.stats import logistic
 
-flag = "prod"
-conf = Config(flag, "prod" , 300)
+flag = "ntm_sigmoid_addneg"
+conf = Config(flag, "prod" , 200)
 
 model = np.load(conf.path_model_npy + ".npy")
 word_embed = model[0]

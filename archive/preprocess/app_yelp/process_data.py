@@ -56,7 +56,7 @@ for line in f:
         line_processed = "\t".join((business_id,tags, text))
         batch = "\n".join((batch, line_processed))
         n_count += 1
-        if n_count % 100000 == 0:
+        if n_count % 10000 == 0:
             print(n_count)
             f_processed.write(batch)
             f_processed.write("\n")

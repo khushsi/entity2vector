@@ -159,6 +159,8 @@ class DataProvider:
         else:
             print("mode config is wrong")
             return
+        print('Shape of Cor-matrix: %s' % (self.cor_smatrix.shape, ))
+        print('#(data) in Cor-matrix: %d' % self.cor_smatrix.nnz)
 
     def generate_data(self, batch_size, is_val):
         word_idxs = np.zeros((batch_size, 1))
@@ -167,9 +169,11 @@ class DataProvider:
         labels = np.zeros((batch_size, 1))
         append_data = True
         batch_idx = 0
-
+        batch_count = 0
+        # use sparse matrix (COOrdinate format, [row, col, data]), row is word,  column is business
+        # data_len=how many non-empty value, e.g here is 12224209, the shape of matrix is [61565, 26629], only 0.7456% is not zero
         data_len = len(self.cor_smatrix.row)
-        idx = rd.sample(range(data_len), data_len)
+        idx = rd.sample(range(data_len), data_len) # shuffle the idx of data (not replacement by default)
         data_set_row = self.cor_smatrix.row[idx]
         data_set_col = self.cor_smatrix.col[idx]
 
@@ -185,7 +189,7 @@ class DataProvider:
         idx_train = 0
 
         while True:
-
+            # get a positive sample, as anything in cor_matrix is positive, so just pick up one by one
             if is_val:
                 word_idx = val_set_row[idx_val % val_len]
                 pos_item_idx = val_set_col[idx_val % val_len]
@@ -196,6 +200,8 @@ class DataProvider:
                 idx_train += 1
 
             trials = 0
+
+            # get a negative sample, randomly pick one up from [0, len(self.idx2prod)-1], and make sure it's not positive (in cor_fmatrix)
             while True:
                 neg_item_idx = -1
                 if self.conf.train_type == TrainType.train_product:
@@ -210,12 +216,16 @@ class DataProvider:
                 if not self.cor_fmatrix[word_idx, neg_item_idx]:
                     append_data = True
                     break
+
+            # add this data into batch
             if append_data:
                 word_idxs[batch_idx, 0] = word_idx
                 item_pos_idxs[batch_idx, 0] = pos_item_idx
                 item_neg_idxs[batch_idx, 0] = neg_item_idx
                 batch_idx += 1
-            if batch_idx == batch_size:
+
+            # if the batch is full,
+            if batch_idx >= batch_size:
                 yield ({'word_idx': word_idxs, 'item_pos_idx': item_pos_idxs, "item_neg_idx": item_neg_idxs},
                        {'merge_layer': labels, "pos_layer": labels})
                 word_idxs = np.zeros((batch_size, 1))
@@ -223,3 +233,23 @@ class DataProvider:
                 item_neg_idxs = np.zeros((batch_size, 1))
                 labels = np.zeros((batch_size, 1))
                 batch_idx = 0
+
+                batch_count += 1
+                if is_val:
+                    print('\n\tValidation: #(batch)=%d' % batch_count)
+                else:
+                    print('\n\tTraining:   #(batch)=%d' % batch_count)
+
+                # shuffle the data order for a few batches
+                if batch_count % 50 == 0:
+                    idx = rd.sample(range(data_len), data_len)  # shuffle the idx of data (not replacement by default)
+                    data_set_row = self.cor_smatrix.row[idx]
+                    data_set_col = self.cor_smatrix.col[idx]
+
+                    train_len = round(data_len * 0.9)
+                    val_len = data_len - train_len
+
+                    train_set_row = data_set_row[:train_len]
+                    train_set_col = data_set_col[:train_len]
+                    val_set_row = data_set_row[train_len:]
+                    val_set_col = data_set_col[train_len:]

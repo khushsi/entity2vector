@@ -27,6 +27,9 @@ os.environ['GOTO_NUM_THREADS'] = str(n_processer)
 os.environ['OMP_NUM_THREADS'] = str(n_processer)
 os.environ['THEANO_FLAGS'] = 'device=cpu,blas.ldflags=-lblas -lgfortran'
 
+import os
+# os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
+os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 conf = Config(flag, args[2], int(args[3]))
 print(flag)
@@ -147,14 +150,14 @@ model.compile(optimizer=Adam(lr=lr), loss = {'final_merge' : ranking_loss})
 print("finish model compiling")
 print(model.summary())
 
-if os.path.exists(conf.path_checker):
+if os.path.exists(conf.path_checkpoint):
     print("load previous checker")
-    model.load_weights(conf.path_checker)
+    model.load_weights(conf.path_checkpoint)
 
 
 dp.generate_init()
 model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size), nb_worker=n_processer, pickle_safe=True,
                     nb_epoch=conf.n_epoch, samples_per_epoch=conf.sample_per_epoch,
                     callbacks=[
-                        ModelCheckpoint(filepath=conf.path_checker, verbose=1, save_best_only=False)
+                        ModelCheckpoint(filepath=conf.path_checkpoint, verbose=1, save_best_only=False)
                     ])

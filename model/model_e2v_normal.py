@@ -103,7 +103,7 @@ print("finish model compiling")
 print(model.summary())
 
 # target = np.array([9999] * len(word_data)) # useless since loss function make it times with 0
-if os.path.exists(conf.path_checker):
+if os.path.exists(conf.path_checkpoint):
     print("load previous checker")
     # model.load_weights(conf.path_checker)
 
@@ -122,5 +122,5 @@ model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size, is_va
                     verbose=1,
                     callbacks=[
                         my_checker_point(item_embed, word_embed, model, conf),
-                        ModelCheckpoint(filepath=conf.path_checker, verbose=1, save_best_only=True)
+                        ModelCheckpoint(filepath=conf.path_checkpoint, verbose=1, save_best_only=True)
                     ])
