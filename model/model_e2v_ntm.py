@@ -118,31 +118,32 @@ def build_ntm_model(dp):
 
     return model, word_embed, item_embed
 
-with tf.device('/gpu:0'):
-    # get data
-    dp = DataProvider(conf)
-    model, word_embed, item_embed = build_ntm_model(dp)
+if __name__ == '__main__':
+    with tf.device('/gpu:0'):
+        # get data
+        dp = DataProvider(conf)
+        model, word_embed, item_embed = build_ntm_model(dp)
 
-    print(model.summary())
+        print(model.summary())
 
-    # target = np.array([9999] * len(word_data)) # useless since loss function make it times with 0
-    if os.path.exists(conf.path_checkpoint):
-        print("load previous checker")
-        # model.load_weights(conf.path_checker)
+        # target = np.array([9999] * len(word_data)) # useless since loss function make it times with 0
+        if os.path.exists(conf.path_checkpoint):
+            print("load previous checker")
+            # model.load_weights(conf.path_checker)
 
-    # model.fit(
-    #     {"word_idx": word_data, "item_pos_idx": item_pos_data, "item_neg_idx": item_neg_data},
-    #     {"merge_layer": target, "pos_layer": target},
-    #     batch_size=conf.batch_size, nb_epoch=conf.n_epoch, validation_split=0.1,
-    #     callbacks=[my_checker_point(item_embed, word_embed, model, conf),
-    #                # my_value_checker([word_embed_, item_pos_embed_, item_neg_embed_, pos_layer_, neg_layer_, merge_layer_]),
-    #                ModelCheckpoint(filepath=conf.path_checker, verbose=1, save_best_only=True)])
+        # model.fit(
+        #     {"word_idx": word_data, "item_pos_idx": item_pos_data, "item_neg_idx": item_neg_data},
+        #     {"merge_layer": target, "pos_layer": target},
+        #     batch_size=conf.batch_size, nb_epoch=conf.n_epoch, validation_split=0.1,
+        #     callbacks=[my_checker_point(item_embed, word_embed, model, conf),
+        #                # my_value_checker([word_embed_, item_pos_embed_, item_neg_embed_, pos_layer_, neg_layer_, merge_layer_]),
+        #                ModelCheckpoint(filepath=conf.path_checker, verbose=1, save_best_only=True)])
 
-    dp.generate_init()
-    model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size, is_val=False), nb_worker=1, pickle_safe=False,
-                        nb_epoch=conf.n_epoch, steps_per_epoch=int(np.ceil(conf.sample_per_epoch/conf.batch_size)),
-                        validation_data = dp.generate_data(batch_size=conf.batch_size, is_val=True), validation_steps=1, #1913599
-                        verbose=1, callbacks=[
-                            my_checker_point(item_embed, word_embed, model, conf),
-                            ModelCheckpoint(filepath=conf.path_checkpoint, verbose=1, save_best_only=False)
-                        ])
+        dp.generate_init()
+        model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size, is_val=False), nb_worker=1, pickle_safe=False,
+                            nb_epoch=conf.n_epoch, steps_per_epoch=int(np.ceil(conf.sample_per_epoch/conf.batch_size)),
+                            validation_data = dp.generate_data(batch_size=conf.batch_size, is_val=True), validation_steps=1, #1913599
+                            verbose=1, callbacks=[
+                                my_checker_point(item_embed, word_embed, model, conf),
+                                ModelCheckpoint(filepath=conf.path_checkpoint, verbose=1, save_best_only=True)
+                            ])

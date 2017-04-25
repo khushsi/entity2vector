@@ -6,7 +6,7 @@ home = os.environ["HOME"] +'/Data/yelp/'
 # home = '/home/memray/Data/yelp/'
 
 do_checking = True
-do_export = True
+do_export = False
 
 if do_checking: #check category list
     # f = open("".join([home, "/data/yelp/business.json"]),"r")

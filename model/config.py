@@ -5,6 +5,16 @@ class TrainType(Enum):
     train_product = 0
     train_tag = 1
 
+    def __eq__(self, other):
+        if self.__class__ is other.__class__:
+            return self.value == other.value
+
+
+    def __lt__(self, other):
+        if self.__class__ is other.__class__:
+            return self.value < other.value
+
+
 class Config:
     def __init__(self, flag, train_type, dim_item):
         home = os.environ["HOME"]
@@ -23,7 +33,7 @@ class Config:
         self.path_raw_data = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
 
         import time, datetime
-        self.path_log = "".join([home, "/Data/yelp/model/training_ntm_%s.log" % datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d-%H%M%S')
+        self.path_log = "".join([home, "/Data/yelp/log/training_ntm_%s.log" % datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d-%H%M%S')
 ])
 
         self.dim_word = 200
@@ -53,6 +63,8 @@ class Config:
         self.path_doc_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/doc"])
         self.path_word_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/word"])
         self.path_model_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/model"])
+
+        # generate in the evaluate/eva_product.py
         self.path_doc_w2c = "".join([home, "/Data/yelp/model/chk_",self.flag,"/doc.txt"])
         self.path_word_w2c = "".join([home, "/Data/yelp/model/chk_",self.flag,"/word.txt"])
         if not os.path.exists(os.path.dirname(self.path_doc_npy)):

@@ -5,7 +5,7 @@ import numpy as np
 import os
 from scipy.stats import logistic
 
-flag = "ntm_sigmoid_addneg"
+flag = "prodx_sigmoid_softmax.lr=0.01"
 conf = Config(flag, "prod" , 200)
 
 model = np.load(conf.path_model_npy + ".npy")

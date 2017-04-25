@@ -107,6 +107,7 @@ class DataProvider:
         Load word embedding from an external Glove model
         :return:
         '''
+        print("Processing", "temp_word_embedding")
         self.temp_word_embedding = {}
         for line in open(self.conf.path_embed, "r", encoding="utf-8"):
             items = line.split()
@@ -135,25 +136,26 @@ class DataProvider:
         self.word_tag_cor_fmatrix = np.load("".join([self.conf.path_npy, "word_tag_cor_fmatrix.npy"]))
         self.doc_tag_cor_fmatrix = np.load("".join([self.conf.path_npy, "doc_tag_cor_fmatrix.npy"]))
         # self.word_doc_cor_smatrix = np.load("".join([self.conf.path_npy, "word_doc_cor_smatrix.npy"]))
+        # self.word_tag_cor_smatrix = np.load("".join([self.conf.path_npy, "word_tag_cor_smatrix.npy"]))
         # self.word_doc_cor_smatrix = mmread("".join([self.conf.path_npy, "word_doc_cor_smatrix.mtx"])).todok()
         print("finish","loading")
 
     def get_item_size(self):
-        if self.conf.train_type == TrainType.train_product:
+        if self.conf.train_type.value == TrainType.train_product.value:
             return len(self.idx2prod)
-        elif self.conf.train_type == TrainType.train_tag:
+        elif self.conf.train_type.value == TrainType.train_tag.value:
             return len(self.idx2tag)
         else:
-            print("mode config is wrong")
+            raise("mode config is wrong")
             return
 
     def generate_init(self):
         self.cor_smatrix = None
         self.cor_fmatrix = None
-        if self.conf.train_type == TrainType.train_product:
+        if self.conf.train_type.value == TrainType.train_product.value:
             self.cor_smatrix = coo_matrix(self.word_doc_cor_fmatrix)
             self.cor_fmatrix = self.word_doc_cor_fmatrix
-        elif self.conf.train_type == TrainType.train_tag:
+        elif self.conf.train_type.value == TrainType.train_tag.value:
             self.cor_smatrix = coo_matrix(self.word_tag_cor_fmatrix)
             self.cor_fmatrix = self.word_tag_cor_fmatrix
         else:
@@ -204,9 +206,9 @@ class DataProvider:
             # get a negative sample, randomly pick one up from [0, len(self.idx2prod)-1], and make sure it's not positive (in cor_fmatrix)
             while True:
                 neg_item_idx = -1
-                if self.conf.train_type == TrainType.train_product:
+                if self.conf.train_type.value == TrainType.train_product.value:
                     neg_item_idx = rd.randint(0, len(self.idx2prod) - 1)
-                elif self.conf.train_type == TrainType.train_tag:
+                elif self.conf.train_type.value == TrainType.train_tag.value:
                     neg_item_idx = rd.randint(0, len(self.idx2tag) - 1)
 
                 trials += 1

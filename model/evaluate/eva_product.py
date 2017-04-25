@@ -1,6 +1,6 @@
 from config import Config
 from model.data import DataProvider
-from gensim.models.word2vec import Word2Vec
+from gensim.models import KeyedVectors
 import numpy as np
 import os
 
@@ -76,7 +76,7 @@ transfer_b = describe_model[3]
 
 
 # test doc
-model = Word2Vec.load_word2vec_format(conf.path_doc_w2c)
+model = KeyedVectors.load_word2vec_format(conf.path_doc_w2c)
 print("init")
 while True:
     source = input()
