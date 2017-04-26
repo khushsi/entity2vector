@@ -26,7 +26,7 @@ class Config:
         # for data
         # self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_DEC22.txt"])
         # self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_Jan7_alltrue_nostem.txt"])
-        self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_20170418.txt"])
+        self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_20170425.txt"])
         # self.path_data = "".join([home, "/data/yelp/sample.txt"])
         # self.path_embed = "".join([home, "/Data/glove/glove.processed.840B.300d.txt"])
         self.path_embed = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
