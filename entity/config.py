@@ -88,7 +88,7 @@ class Config:
         self.path_npy = "".join([home, "/Data/yelp/model/npy/"])
         if not os.path.exists(os.path.dirname(self.path_npy)):
             os.makedirs(os.path.dirname(self.path_npy))
-        self.batch_size = 300000
+        self.batch_size = 100000
         self.n_epoch = 500
         # self.sample_per_epoch = 19135900
         self.sample_per_epoch = 12500000
