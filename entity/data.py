@@ -13,7 +13,6 @@ class DataProvider:
     def __init__(self, conf):
         self.conf = conf
         npy_checker = "".join([self.conf.path_npy, "idx2word.npy"])
-        self.f_log = open(conf.path_logs, "w", encoding="utf-8")
         if os.path.exists(npy_checker):
             print("find npy file", npy_checker)
             self.load()
