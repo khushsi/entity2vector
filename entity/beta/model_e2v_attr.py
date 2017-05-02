@@ -5,17 +5,17 @@ from keras.layers import Input
 from keras.layers.core import *
 from keras.layers.embeddings import *
 
-from beta.data import DataProvider
+from entity.beta.data import DataProvider
 from keras.callbacks import ModelCheckpoint
 import numpy as np
-from config import Config
+from entity.config import Config
 from keras.optimizers import *
 import numpy as np
 import theano
 import sys
 from keras.layers.merge import dot, concatenate, Dot, Concatenate
 
-from model.callbacks import my_checker_point
+from entity.model.callbacks import my_checker_point
 
 
 def build_attr_model(dp):
