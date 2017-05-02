@@ -82,7 +82,7 @@ def preprocess_corpus(documents):
                 frequency[token] += 1
 
         print('Removing low tf terms')
-        texts = [[token for token in text if frequency[token] > 1]
+        texts = [[token for token in text if frequency[token] > conf.path_gensim_tf]
                       for text in texts]
 
         print('Exporting dict and corpus')
