@@ -63,6 +63,7 @@ class DataProvider:
                     self.idx2word.append(word)
 
         print("finish", "process idx")
+        print('#(words)=%d' % len(self.idx2word))
 
         # process co-occurrence data
         self.word_doc_cor_fmatrix = np.full(shape=(len(self.idx2word), len(self.idx2prod)), fill_value=False, dtype=np.bool)

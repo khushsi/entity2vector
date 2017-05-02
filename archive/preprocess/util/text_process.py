@@ -9,7 +9,7 @@ import re
 
 
 class TextProcess:
-
+    dictionary = None
     UNK = "<UNK>"
 
     tag_filter = ["NOUN","ADJ","ADP"]
@@ -21,6 +21,9 @@ class TextProcess:
 
     stem_pairs = set()
     stopword = set(stopwords.words('english'))
+
+    def __init__(self, dictionary):
+        self.dictionary = dictionary
 
     @classmethod
     def initiliaze(cls, path_pretraining):
@@ -90,7 +93,6 @@ class TextProcess:
         f_stempairs.write(batch)
 
 
-    @classmethod
     def process(self, text, pos_filter = False, stem_flag = False, validate_flag = True, remove_stop_word = True, only_interested_words = True):
         text = text.lower()
         text_processed = ""
@@ -117,9 +119,13 @@ class TextProcess:
             #                                                     only_interested_words=only_interested_words)
             if word in self.stopword:
                 continue
-            if len(word) <= 2 or len(word) >= 16:
+            if len(word) <= 2 or len(word) >= 10:
                 continue
-            text_processed += word
+            if self.dictionary[word] <= 100 or self.dictionary[word] >= 500000:
+                continue
+            if word not in TextProcess.interested_words:
+                continue
+            text_processed += word + ' '
 
         return text_processed
 

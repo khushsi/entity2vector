@@ -67,19 +67,25 @@ def preprocess_corpus(documents):
         dictionary = corpora.Dictionary.load_from_text(data_path+'yelp_10class_review.dict')
     else:
         stoplist = stopwords.words('english')
+
+        print('Removing stop words')
         texts = [[word for word in document.lower().split() if word not in stoplist]
                       for document in documents]
 
+        print('Counting term frequency')
          # remove words that appear only once
         from collections import defaultdict
         frequency = defaultdict(int)
+
         for text in texts:
             for token in text:
                 frequency[token] += 1
 
+        print('Removing low tf terms')
         texts = [[token for token in text if frequency[token] > 1]
                       for text in texts]
 
+        print('Exporting dict and corpus')
         dictionary = corpora.Dictionary(texts)
         dictionary.save_as_text(data_path+'yelp_10class_review.dict')  # store the dictionary, for future reference
         corpus = [dictionary.doc2bow(text) for text in texts]
@@ -91,7 +97,7 @@ if __name__ == '__main__':
     home = os.environ["HOME"]
     home_path = home + "/Data/yelp/"
     data_path = home + "/Data/yelp/output/"
-    yelp_text_path = data_path + 'restaurant_review_pairs.txt'
+    yelp_text_path = data_path + 'restaurant_review_pairs_freq=%d.txt' % conf.tf_cutoff
     processed_document_path = data_path + 'restaurant_processed_document.txt'
     lda_model_path = home_path + 'model/lda/yelp_restaurant_review.lda'
 

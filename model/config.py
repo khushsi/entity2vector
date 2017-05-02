@@ -1,6 +1,13 @@
 import os
+
+import logging
+
+import time, datetime
+import sys
 import theano
+
 from enum import Enum
+
 class TrainType(Enum):
     train_product = 0
     train_tag = 1
@@ -16,6 +23,23 @@ class TrainType(Enum):
 
 
 class Config:
+    def init_logging(self, logfile):
+        formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(module)s: %(message)s',
+                                      datefmt='%m/%d/%Y %H:%M:%S')
+        fh = logging.FileHandler(logfile)
+        # ch = logging.StreamHandler()
+        ch = logging.StreamHandler(sys.stdout)
+
+        fh.setFormatter(formatter)
+        ch.setFormatter(formatter)
+        # fh.setLevel(logging.INFO)
+        ch.setLevel(logging.INFO)
+        logging.getLogger().addHandler(ch)
+        logging.getLogger().addHandler(fh)
+        logging.getLogger().setLevel(logging.INFO)
+
+        return logging
+
     def __init__(self, flag, train_type, dim_item):
         home = os.environ["HOME"]
         if train_type == "prod":
@@ -23,18 +47,22 @@ class Config:
         elif train_type == "tag":
             self.train_type = TrainType.train_tag
         self.flag = flag
+
+        self.task_name = 'e2v_ntm'
+        self.tf_cutoff = 100
+        self.timemark  = time.strftime('%Y%m%d-%H%M%S', time.localtime(time.time()))
         # for data
         # self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_DEC22.txt"])
         # self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_Jan7_alltrue_nostem.txt"])
-        self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_20170425.txt"])
+        self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_20170425_freq=100.txt"])
         # self.path_data = "".join([home, "/data/yelp/sample.txt"])
         # self.path_embed = "".join([home, "/Data/glove/glove.processed.840B.300d.txt"])
-        self.path_embed = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
-        self.path_raw_data = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
+        self.path_embed     = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
+        self.path_raw_data  = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
 
-        import time, datetime
-        self.path_log = "".join([home, "/Data/yelp/log/training_ntm_%s.log" % datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d-%H%M%S')
-])
+        self.path_log = "".join([home, "/Data/yelp/model/training.%s_%s.%s.log" % (self.task_name, self.flag, self.timemark)])
+
+        self.logger = self.init_logging(self.path_log)
 
         self.dim_word = 200
         self.dim_item = dim_item
