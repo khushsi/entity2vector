@@ -110,7 +110,7 @@ class Config:
         if not os.path.exists(os.path.dirname(self.path_word_w2c)):
             os.mkdir(os.path.dirname(self.path_word_w2c))
 
-        self.path_logs = "".join([home, "/Data/yelp/model/log/", self.flag, ".log"])
-        if not os.path.exists(os.path.dirname(self.path_logs)):
-            os.mkdir(os.path.dirname(self.path_logs))
+        # self.path_logs = "".join([home, "/Data/yelp/model/log/", self.flag, ".log"])
+        # if not os.path.exists(os.path.dirname(self.path_logs)):
+        #     os.mkdir(os.path.dirname(self.path_logs))
 

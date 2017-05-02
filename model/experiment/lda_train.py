@@ -20,16 +20,6 @@ from model.experiment.category_classification import prepare_dataset
 __author__ = "Rui Meng"
 __email__ = "rui.meng@pitt.edu"
 
-args = sys.argv
-if len(args) <= 10:
-    args = [args[0], "prodx_sigmoid_softmax", "prod", "200", "5"]
-print(args)
-flag = args[1]
-n_processer = int(args[4])
-conf = Config(flag, args[2], int(args[3]))
-print(flag)
-
-
 def load_review_text(yelp_text_path):
     if os.path.exists(processed_document_path):
         with open(processed_document_path, 'r') as f:
@@ -94,6 +84,15 @@ def preprocess_corpus(documents):
     return corpus, dictionary
 
 if __name__ == '__main__':
+    args = sys.argv
+    if len(args) <= 10:
+        args = [args[0], "prodx_sigmoid_softmax", "prod", "200", "5"]
+    print(args)
+    flag = args[1]
+    n_processer = int(args[4])
+    conf = Config(flag, args[2], int(args[3]))
+    print(flag)
+
     home = os.environ["HOME"]
     home_path = home + "/Data/yelp/"
     data_path = home + "/Data/yelp/output/"
@@ -114,7 +113,7 @@ if __name__ == '__main__':
     else:
         lda = LdaModel(corpus=X_corpus, id2word=dictionary, num_topics=200, update_every=1, passes=1)  # train model
         with open(lda_model_path, 'wb') as f:
-            pickle.dump(lda, lda_model_path)
+            pickle.dump(lda, f)
 
 
     # print(lda[doc_bow])  # get topic probability distribution for a document

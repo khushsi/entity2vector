@@ -17,35 +17,6 @@ import numpy as np
 import sys
 import tensorflow as tf
 
-# from tensorflow.python.client import device_lib
-# device_lib.list_local_devices()
-
-args = sys.argv
-if len(args) <= 10:
-    args = [args[0], "prodx_sigmoid_softmax.lr=0.01", "prod", "200", "5"]
-print(args)
-flag = args[1]
-n_processer = int(args[4])
-conf = Config(flag, args[2], int(args[3]))
-print(flag)
-
-
-os.environ['MKL_NUM_THREADS'] = str(n_processer)
-os.environ['GOTO_NUM_THREADS'] = str(n_processer)
-os.environ['OMP_NUM_THREADS'] = str(n_processer)
-# os.environ['THEANO_FLAGS'] = 'device=gpu,blas.ldflags=-lblas -lgfortran'
-os.environ['THEANO_FLAGS'] = 'device=gpu'
-
-import os
-# os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-# os.environ["CUDA_VISIBLE_DEVICES"]="0"
-
-config = tf.ConfigProto(log_device_placement=False, allow_soft_placement=True)
-config.gpu_options.allow_growth = True
-config.gpu_options.per_process_gpu_memory_fraction = 1
-session = tf.Session(config=config)
-K.set_session(session)
-
 # log setting
 #import sys
 #sys.stdout = open(conf.path_log, "w")
@@ -119,6 +90,31 @@ def build_ntm_model(dp):
     return model, word_embed, item_embed
 
 if __name__ == '__main__':
+    args = sys.argv
+    if len(args) <= 10:
+        args = [args[0], "prodx_sigmoid_softmax.lr=0.01", "prod", "200", "5"]
+    print(args)
+    flag = args[1]
+    n_processer = int(args[4])
+    conf = Config(flag, args[2], int(args[3]))
+    print(flag)
+
+    # from tensorflow.python.client import device_lib
+    # device_lib.list_local_devices()
+    os.environ['MKL_NUM_THREADS'] = str(n_processer)
+    os.environ['GOTO_NUM_THREADS'] = str(n_processer)
+    os.environ['OMP_NUM_THREADS'] = str(n_processer)
+    # os.environ['THEANO_FLAGS'] = 'device=gpu,blas.ldflags=-lblas -lgfortran'
+    os.environ['THEANO_FLAGS'] = 'device=gpu'
+    # os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
+    # os.environ["CUDA_VISIBLE_DEVICES"]="0"
+    config = tf.ConfigProto(log_device_placement=False, allow_soft_placement=True)
+    config.gpu_options.allow_growth = True
+    config.gpu_options.per_process_gpu_memory_fraction = 1
+    session = tf.Session(config=config)
+    K.set_session(session)
+
+
     with tf.device('/gpu:0'):
         # get data
         dp = DataProvider(conf)

@@ -32,7 +32,7 @@ os.environ['THEANO_FLAGS'] = 'device=gpu'
 
 import os
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-os.environ["CUDA_VISIBLE_DEVICES"]=""
+# os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 config = tf.ConfigProto(log_device_placement=True, allow_soft_placement=True)
 config.gpu_options.allow_growth = True
