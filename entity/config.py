@@ -60,6 +60,8 @@ class Config:
         self.path_embed     = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
         self.path_raw_data  = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
         self.path_log = "".join([home, "/Data/yelp/model/training.%s_%s.%s.log" % (self.task_name, self.flag, self.timemark)])
+        if not os.path.exists(home+'/Data/yelp/model/'):
+            os.makedirs(home+'/Data/yelp/model/')
         self.logger = self.init_logging(self.path_log)
 
         # for Gensim setting
