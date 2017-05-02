@@ -106,8 +106,8 @@ if __name__ == '__main__':
     os.environ['OMP_NUM_THREADS'] = str(n_processer)
     # os.environ['THEANO_FLAGS'] = 'device=gpu,blas.ldflags=-lblas -lgfortran'
     os.environ['THEANO_FLAGS'] = 'device=gpu'
-    # os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-    # os.environ["CUDA_VISIBLE_DEVICES"]="0"
+    os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
+    os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
     config = tf.ConfigProto(log_device_placement=False, allow_soft_placement=True)
     config.gpu_options.allow_growth = True
     config.gpu_options.per_process_gpu_memory_fraction = 1
