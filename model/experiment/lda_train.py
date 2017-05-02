@@ -62,9 +62,9 @@ def load_review_text(yelp_text_path):
     return business_document_dict.keys(), business_document_dict.values()
 
 def preprocess_corpus(documents):
-    if os.path.exists(data_path+'yelp_10class_review.mm'):
-        corpus = corpora.MmCorpus(data_path+'yelp_10class_review.mm')
-        dictionary = corpora.Dictionary.load_from_text(data_path+'yelp_10class_review.dict')
+    if os.path.exists(conf.path_gensim_corpus):
+        corpus = corpora.MmCorpus(conf.path_gensim_corpus)
+        dictionary = corpora.Dictionary.load_from_text(conf.path_gensim_dict)
     else:
         stoplist = stopwords.words('english')
 
@@ -87,9 +87,9 @@ def preprocess_corpus(documents):
 
         print('Exporting dict and corpus')
         dictionary = corpora.Dictionary(texts)
-        dictionary.save_as_text(data_path+'yelp_10class_review.dict')  # store the dictionary, for future reference
+        dictionary.save_as_text(conf.path_gensim_dict)  # store the dictionary, for future reference
         corpus = [dictionary.doc2bow(text) for text in texts]
-        corpora.MmCorpus.serialize(data_path+'yelp_10class_review.mm', corpus)
+        corpora.MmCorpus.serialize(conf.path_gensim_corpus, corpus)
 
     return corpus, dictionary
 

@@ -33,7 +33,7 @@ class Config:
         fh.setFormatter(formatter)
         ch.setFormatter(formatter)
         # fh.setLevel(logging.INFO)
-        ch.setLevel(logging.INFO)
+        # ch.setLevel(logging.INFO)
         logging.getLogger().addHandler(ch)
         logging.getLogger().addHandler(fh)
         logging.getLogger().setLevel(logging.INFO)
@@ -49,7 +49,7 @@ class Config:
         self.flag = flag
 
         self.task_name = 'e2v_ntm'
-        self.tf_cutoff = 100
+        self.tf_cutoff = 100    # use 100, #(freq>100)=22.5k, #(freq>200)=16.5k, #(freq>500)=10.6k
         self.timemark  = time.strftime('%Y%m%d-%H%M%S', time.localtime(time.time()))
         # for data
         # self.path_data = "".join([home, "/Data/yelp/output/review_processed_rest_interestword_DEC22.txt"])
@@ -59,10 +59,14 @@ class Config:
         # self.path_embed = "".join([home, "/Data/glove/glove.processed.840B.300d.txt"])
         self.path_embed     = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
         self.path_raw_data  = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
-
         self.path_log = "".join([home, "/Data/yelp/model/training.%s_%s.%s.log" % (self.task_name, self.flag, self.timemark)])
-
         self.logger = self.init_logging(self.path_log)
+
+        # for Gensim setting
+        self.path_gensim_tf = 30 # set as 30, #(freq>30)=50k, #(freq>1)=226k,
+        self.path_gensim_dict = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.dict" % self.path_gensim_tf
+        self.path_gensim_corpus = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.corpus" % self.path_gensim_tf
+
 
         self.dim_word = 200
         self.dim_item = dim_item

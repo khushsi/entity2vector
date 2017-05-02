@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="747f4ef7-b06c-4f0d-ad1d-516743812575" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/entity2vector.iml" afterPath="$PROJECT_DIR$/.idea/entity2vector.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/preprocess/app_yelp/process_data.py" afterPath="$PROJECT_DIR$/archive/preprocess/app_yelp/process_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archive/preprocess/util/text_process.py" afterPath="$PROJECT_DIR$/archive/preprocess/util/text_process.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/config.py" afterPath="$PROJECT_DIR$/model/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/data.py" afterPath="$PROJECT_DIR$/model/data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/experiment/lda_train.py" afterPath="$PROJECT_DIR$/model/experiment/lda_train.py" />
     </list>
     <ignored path="entity2vector.iws" />
@@ -30,7 +25,7 @@
     <SUITE FILE_PATH="coverage/entity2vector$config.coverage" NAME="config Coverage Results" MODIFIED="1492991540958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1493084486967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$test.coverage" NAME="test Coverage Results" MODIFIED="1493082973744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/experiment" />
-    <SUITE FILE_PATH="coverage/entity2vector$lda_train.coverage" NAME="lda_train Coverage Results" MODIFIED="1493694155648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model/experiment" />
+    <SUITE FILE_PATH="coverage/entity2vector$lda_train.coverage" NAME="lda_train Coverage Results" MODIFIED="1493696289790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model/experiment" />
     <SUITE FILE_PATH="coverage/entity2vector$eva_product.coverage" NAME="eva_product Coverage Results" MODIFIED="1493084741411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model/evaluate" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -42,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="model_e2v_ntm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="model_e2v_ntm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/model_e2v_ntm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="145" column="50" lean-forward="true" selection-start-line="145" selection-start-column="50" selection-end-line="145" selection-end-column="50" />
+            <state relative-caret-position="359">
+              <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
               <folding>
                 <element signature="e#27#36#0" expanded="true" />
               </folding>
@@ -69,18 +64,18 @@
       <file leaf-file-name="lda_train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/experiment/lda_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="120" column="45" lean-forward="false" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="45" />
+            <state relative-caret-position="176">
+              <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category_classification.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="category_classification.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/experiment/category_classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="330">
+              <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -89,11 +84,21 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="66" column="74" lean-forward="false" selection-start-line="66" selection-start-column="74" selection-end-line="66" selection-end-column="74" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="raw_review_restaurant_dictioary.json.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Data/yelp/output/raw_review_restaurant_dictioary.json.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2358252">
+              <caret line="87728" column="0" lean-forward="false" selection-start-line="87728" selection-start-column="0" selection-end-line="87728" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>`</find>
       <find>steps_per_epoch</find>
       <find>verbose</find>
       <find>sample_per_epoch</find>
@@ -125,7 +129,6 @@
       <find>path_doc_w2c</find>
       <find>prod_vector</find>
       <find>item_embed</find>
-      <find>val_loss:</find>
       <find>tra</find>
       <find>join</find>
       <find>process idx</find>
@@ -138,6 +141,8 @@
       <find>interested_words</find>
       <find>line =</find>
       <find>time</find>
+      <find>saving</find>
+      <find>val_loss:</find>
       <find>flag</find>
     </findStrings>
     <replaceStrings>
@@ -167,8 +172,8 @@
         <option value="$PROJECT_DIR$/model/data.py" />
         <option value="$PROJECT_DIR$/archive/preprocess/app_yelp/process_data.py" />
         <option value="$PROJECT_DIR$/archive/preprocess/util/text_process.py" />
-        <option value="$PROJECT_DIR$/model/config.py" />
         <option value="$PROJECT_DIR$/model/experiment/lda_train.py" />
+        <option value="$PROJECT_DIR$/model/config.py" />
       </list>
     </option>
   </component>
@@ -826,7 +831,14 @@
       <option name="project" value="LOCAL" />
       <updated>1493175102984</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="new data processing">
+      <created>1493694964780</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1493694964780</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -898,7 +910,8 @@
     <MESSAGE value="modify some keras api to run the model" />
     <MESSAGE value="load embedding from checkpoint" />
     <MESSAGE value="optimize the code for preprocessing" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimize the code for preprocessing" />
+    <MESSAGE value="new data processing" />
+    <option name="LAST_COMMIT_MESSAGE" value="new data processing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -937,16 +950,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/model/layers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="278" column="46" lean-forward="true" selection-start-line="278" selection-start-column="46" selection-end-line="278" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1284,39 +1287,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/experiment/category_classification.py">
+    <entry file="file://$PROJECT_DIR$/model/model_e2v_ntm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="359">
+          <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#27#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/experiment/lda_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="120" column="45" lean-forward="false" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="45" />
+        <state relative-caret-position="176">
+          <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model_e2v_ntm.py">
+    <entry file="file://$PROJECT_DIR$/model/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="145" column="50" lean-forward="true" selection-start-line="145" selection-start-column="50" selection-end-line="145" selection-end-column="50" />
+        <state relative-caret-position="357">
+          <caret line="66" column="74" lean-forward="false" selection-start-line="66" selection-start-column="74" selection-end-line="66" selection-end-column="74" />
           <folding>
-            <element signature="e#27#36#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Data/yelp/output/raw_review_restaurant_dictioary.json.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2358252">
+          <caret line="87728" column="0" lean-forward="false" selection-start-line="87728" selection-start-column="0" selection-end-line="87728" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/experiment/category_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
