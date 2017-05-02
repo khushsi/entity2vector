@@ -9,9 +9,9 @@ os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 import sys
-from model.config import Config
-from model_e2v_ntm import build_ntm_model
-from model.data import DataProvider
+from entity.config import Config
+from entity.model_e2v_ntm import build_ntm_model
+from entity.data import DataProvider
 import tensorflow as tf
 
 __author__ = "Rui Meng"

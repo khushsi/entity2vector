@@ -48,7 +48,6 @@ class Config:
             self.train_type = TrainType.train_tag
         self.flag = flag
 
-        self.task_name = 'e2v_ntm'
         self.tf_cutoff = 100    # use 100, #(freq>100)=22.5k, #(freq>200)=16.5k, #(freq>500)=10.6k
         self.timemark  = time.strftime('%Y%m%d-%H%M%S', time.localtime(time.time()))
         # for data
@@ -59,23 +58,27 @@ class Config:
         # self.path_embed = "".join([home, "/Data/glove/glove.processed.840B.300d.txt"])
         self.path_embed     = "".join([home, "/Data/glove/glove.twitter.27B.200d.txt"])
         self.path_raw_data  = "".join([home, "/Data/yelp/output/raw_review_restaurant.json"])
-        self.path_log = "".join([home, "/Data/yelp/model/training.%s_%s.%s.log" % (self.task_name, self.flag, self.timemark)])
+        self.path_log = "".join([home, "/Data/yelp/model/training.%s_%s.%s.log" % (self.flag, self.flag, self.timemark)])
         if not os.path.exists(home+'/Data/yelp/model/'):
             os.makedirs(home+'/Data/yelp/model/')
         self.logger = self.init_logging(self.path_log)
 
         # for Gensim setting
         self.path_gensim_tf = 30 # set as 30, #(freq>30)=50k, #(freq>1)=226k,
+        self.processed_document_path = home + "/Data/yelp/output/" + 'restaurant_processed_document.txt'
+        self.path_review_pairs = home + "/Data/yelp/output/" + 'restaurant_review_pairs_freq=%d.txt' % self.tf_cutoff
+
         self.path_gensim_dict = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.dict" % self.path_gensim_tf
         self.path_gensim_corpus = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.corpus" % self.path_gensim_tf
 
-
-        self.dim_word = 200
-        self.dim_item = dim_item
-
-        self.neg_trials = 100
+        self.lda_model_path = home + '/Data/yelp/model/lda/yelp_restaurant_review.lda'
+        self.path_lda_doc_vector = home + '/Data/yelp/model/lda/yelp_10class_doc-lda_vectors.pkl'
 
         # for model
+        self.dim_word = 200
+        self.dim_item = dim_item
+        self.neg_trials = 100
+
         self.path_weight = "".join([home, "/Data/yelp/model/chk_",self.flag , "/weight"])
         if not os.path.exists(os.path.dirname(self.path_weight)):
             os.makedirs(os.path.dirname(self.path_weight))
@@ -96,6 +99,7 @@ class Config:
         # for save
         self.path_doc_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/doc"])
         self.path_word_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/word"])
+        self.path_tag_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/tag"])
         self.path_model_npy = "".join([home, "/Data/yelp/model/chk_",self.flag,"/model"])
 
         # generate in the evaluate/eva_product.py
@@ -105,6 +109,8 @@ class Config:
             os.makedirs(os.path.dirname(self.path_doc_npy))
         if not os.path.exists(os.path.dirname(self.path_word_npy)):
             os.makedirs(os.path.dirname(self.path_word_npy))
+        if not os.path.exists(os.path.dirname(self.path_tag_npy)):
+            os.makedirs(os.path.dirname(self.path_tag_npy))
         if not os.path.exists(os.path.dirname(self.path_model_npy)):
             os.makedirs(os.path.dirname(self.path_model_npy))
         if not os.path.exists(os.path.dirname(self.path_doc_w2c)):

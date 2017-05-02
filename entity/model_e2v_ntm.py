@@ -136,9 +136,9 @@ if __name__ == '__main__':
         #                ModelCheckpoint(filepath=conf.path_checker, verbose=1, save_best_only=True)])
 
         dp.generate_init()
-        model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size, is_val=False), nb_worker=1, pickle_safe=False,
+        model.fit_generator(generator=dp.generate_data(batch_size=conf.batch_size, is_validate=False), nb_worker=1, pickle_safe=False,
                             nb_epoch=conf.n_epoch, steps_per_epoch=int(np.ceil(conf.sample_per_epoch/conf.batch_size)),
-                            validation_data = dp.generate_data(batch_size=conf.batch_size, is_val=True), validation_steps=1, #1913599
+                            validation_data = dp.generate_data(batch_size=conf.batch_size, is_validate=True), validation_steps=1,  #1913599
                             verbose=1, callbacks=[
                                 my_checker_point(item_embed, word_embed, model, conf),
                                 ModelCheckpoint(filepath=conf.path_checkpoint, verbose=1, save_best_only=True)

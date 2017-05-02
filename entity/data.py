@@ -164,7 +164,7 @@ class DataProvider:
         print('Shape of Cor-matrix: %s' % (self.cor_smatrix.shape, ))
         print('#(data) in Cor-matrix: %d' % self.cor_smatrix.nnz)
 
-    def generate_data(self, batch_size, is_val):
+    def generate_data(self, batch_size, is_validate):
         word_idxs = np.zeros((batch_size, 1))
         item_pos_idxs = np.zeros((batch_size, 1))
         item_neg_idxs = np.zeros((batch_size, 1))
@@ -193,7 +193,7 @@ class DataProvider:
         while True:
             # print(batch_count)
             # get a positive sample, as anything in cor_matrix is positive, so just pick up one by one
-            if is_val:
+            if is_validate:
                 word_idx = val_set_row[idx_val % val_len]
                 pos_item_idx = val_set_col[idx_val % val_len]
                 idx_val += 1
@@ -238,7 +238,7 @@ class DataProvider:
                 batch_idx = 0
 
                 batch_count += 1
-                if is_val:
+                if is_validate:
                     print('\n\tValidation: #(batch)=%d' % batch_count)
                 else:
                     print('\n\tTraining:   #(batch)=%d' % batch_count)
