@@ -3,6 +3,7 @@
 Python File Template 
 """
 import json
+import pickle
 import os
 import os,sys
 import numpy as np
@@ -29,16 +30,13 @@ conf = Config(flag, args[2], int(args[3]))
 print(flag)
 
 
-def load_review_text(X_yelp_idx):
-    if os.path.exists(yelp_text_path):
-        with open(yelp_text_path, 'r') as f:
-            collection = json.load(f)
+def load_review_text(yelp_text_path):
+    if os.path.exists(processed_document_path):
+        with open(processed_document_path, 'r') as f:
+            business_document_dict = json.load(f)
     else:
-        business_dict = set()
-        document_dict = {}
-        for idx in X_yelp_idx:
-            document_dict[idx] = ''
-        with open(conf.path_data, 'r') as f:
+        business_document_dict = {} # to combine duplicated business
+        with open(yelp_text_path, 'r') as f:
             line_count = 0
             for l in f:
                 line_count += 1
@@ -50,24 +48,23 @@ def load_review_text(X_yelp_idx):
                 if len(tokens) != 3:
                     continue
 
-                b_id = tokens[0].lower().strip()
+                b_id = tokens[0].strip()
                 # if b_id not in business_dict:
                 #     business_dict.add(b_id)
                 #     print('%d\t%s\t%s' % (len(business_dict), b_id, b_id in document_dict))
 
-                if b_id in document_dict:
-                    document_dict[idx] += tokens[2] + ' '
-        collection = [document_dict[idx] for idx in X_yelp_idx]
+                business_document_dict[b_id] = business_document_dict.get(b_id, '') + ' ' + tokens[2]
 
-        with open(yelp_text_path, 'w') as f:
-            json.dump(collection, f)
+        with open(processed_document_path, 'w') as f:
+            json.dump(business_document_dict, f)
 
-    return collection
+    print('Load reviews of %d businesses' % len(business_document_dict))
+    return business_document_dict.keys(), business_document_dict.values()
 
 def preprocess_corpus(documents):
-    if os.path.exists(lda_home_path+'yelp_10class_review.mm'):
-        corpus = corpora.MmCorpus(lda_home_path+'yelp_10class_review.mm')
-        dictionary = corpora.Dictionary.load_from_text(lda_home_path+'yelp_10class_review.dict')
+    if os.path.exists(data_path+'yelp_10class_review.mm'):
+        corpus = corpora.MmCorpus(data_path+'yelp_10class_review.mm')
+        dictionary = corpora.Dictionary.load_from_text(data_path+'yelp_10class_review.dict')
     else:
         stoplist = stopwords.words('english')
         texts = [[word for word in document.lower().split() if word not in stoplist]
@@ -84,30 +81,34 @@ def preprocess_corpus(documents):
                       for text in texts]
 
         dictionary = corpora.Dictionary(texts)
-        dictionary.save_as_text(lda_home_path+'yelp_10class_review.dict')  # store the dictionary, for future reference
+        dictionary.save_as_text(data_path+'yelp_10class_review.dict')  # store the dictionary, for future reference
         corpus = [dictionary.doc2bow(text) for text in texts]
-        corpora.MmCorpus.serialize(lda_home_path+'yelp_10class_review.mm', corpus)
+        corpora.MmCorpus.serialize(data_path+'yelp_10class_review.mm', corpus)
 
     return corpus, dictionary
 
 if __name__ == '__main__':
     home = os.environ["HOME"]
-    lda_home_path = home + "/Data/yelp/10-category-classification/"
-    lda_xy_path = lda_home_path + 'yelp_10class_Xid_Y.pkl'
-    yelp_text_path = lda_home_path + 'yelp_10class_review_text.pkl'
-    lda_model_path = lda_home_path + 'yelp_10class_review.lda'
+    home_path = home + "/Data/yelp/"
+    data_path = home + "/Data/yelp/output/"
+    yelp_text_path = data_path + 'restaurant_review_pairs.txt'
+    processed_document_path = data_path + 'restaurant_processed_document.txt'
+    lda_model_path = home_path + 'model/lda/yelp_restaurant_review.lda'
 
-    dp = DataProvider(conf)
+    # dp = DataProvider(conf)
     print('Loading documents from yelp dataset')
-    X_text      = load_review_text(dp.idx2prod)
+    business_idx, documents      = load_review_text(yelp_text_path)
+
     print('Preprocessing documents')
-    X_corpus, dictionary    = preprocess_corpus(X_text)
+    X_corpus, dictionary         = preprocess_corpus(documents)
 
     if os.path.exists(lda_model_path):
-        lda = np.load(lda_home_path)
+        with open(lda_model_path, 'rb') as f:
+            lda = pickle.load(f)
     else:
         lda = LdaModel(corpus=X_corpus, id2word=dictionary, num_topics=200, update_every=1, passes=1)  # train model
-        np.pickle.dump(lda, lda_model_path)
+        with open(lda_model_path, 'wb') as f:
+            pickle.dump(lda, lda_model_path)
 
 
     # print(lda[doc_bow])  # get topic probability distribution for a document

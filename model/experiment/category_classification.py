@@ -112,12 +112,12 @@ if __name__ == '__main__':
     print('Accuracy=%f' % accuracy)
 
     print('*' * 10 + ' Micro Score ' + '*' * 10)
-    print('p=%f' % f_micro)
+    print('p=%f' % p_micro)
     print('r=%f' % r_micro)
     print('f-score=%f' % f_micro)
 
     print('*' * 10 + ' Macro Score ' + '*' * 10)
-    print('p=%f' % f_macro)
+    print('p=%f' % p_macro)
     print('r=%f' % r_macro)
     print('f-score=%f' % f_macro)
 
