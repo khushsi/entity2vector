@@ -6,12 +6,12 @@ from keras.layers import Merge
 from keras.layers.merge import dot, concatenate, Dot, Concatenate
 from keras.layers.core import *
 from keras.layers.embeddings import *
-from model.model.layers import *
-from model.data import DataProvider
+from entity.model.layers import *
+from entity.data import DataProvider
 from keras.callbacks import ModelCheckpoint
-from model.model.callbacks import *
+from entity.model.callbacks import *
 import numpy as np
-from model.config import Config
+from entity.config import Config
 from keras.optimizers import *
 import numpy as np
 import sys

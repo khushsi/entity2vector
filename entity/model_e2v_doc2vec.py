@@ -5,12 +5,12 @@ from keras.layers import Input
 from keras.layers.core import *
 from keras.layers.embeddings import *
 from keras.layers.merge import dot, concatenate, Dot, Concatenate
-from model.layers import *
-from model.data import DataProvider
+from entity.model.layers import *
+from entity.data import DataProvider
 from keras.callbacks import ModelCheckpoint
-from model.callbacks import *
+from entity.model.callbacks import *
 import numpy as np
-from config import Config
+from entity.config import Config
 from keras.optimizers import *
 import numpy as np
 import theano
