@@ -175,7 +175,7 @@ class Exp():
 
 
 if __name__ == '__main__':
-    exp = Exp(k=7)
+    exp = Exp(k=5)
     exp.split()
     exp.initlize()
     exp.test()

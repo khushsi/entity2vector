@@ -19,7 +19,7 @@
     <SUITE FILE_PATH="coverage/entity2vector$text_process.coverage" NAME="text_process Coverage Results" MODIFIED="1493151787275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/preprocess/util" />
     <SUITE FILE_PATH="coverage/entity2vector$model_e2v_ntm.coverage" NAME="model_e2v_ntm Coverage Results" MODIFIED="1493691214988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$model_e2v_doc2vec.coverage" NAME="model_e2v_doc2vec Coverage Results" MODIFIED="1493764037089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity" />
-    <SUITE FILE_PATH="coverage/entity2vector$user_rating.coverage" NAME="user_rating Coverage Results" MODIFIED="1493784884388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
+    <SUITE FILE_PATH="coverage/entity2vector$user_rating.coverage" NAME="user_rating Coverage Results" MODIFIED="1493791661936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
     <SUITE FILE_PATH="coverage/entity2vector$eva_dimension.coverage" NAME="eva_dimension Coverage Results" MODIFIED="1493775527470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/evaluate" />
     <SUITE FILE_PATH="coverage/entity2vector$data.coverage" NAME="data Coverage Results" MODIFIED="1493105206082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$process_data.coverage" NAME="process_data Coverage Results" MODIFIED="1493242724439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/preprocess/app_yelp" />
@@ -30,7 +30,7 @@
     <SUITE FILE_PATH="coverage/entity2vector$export_embedding_from_checkpoint.coverage" NAME="export_embedding_from_checkpoint Coverage Results" MODIFIED="1493773714583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
     <SUITE FILE_PATH="coverage/entity2vector$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1493084486967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$lda_train.coverage" NAME="lda_train Coverage Results" MODIFIED="1493738977296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model/experiment" />
-    <SUITE FILE_PATH="coverage/entity2vector$eva_product.coverage" NAME="eva_product Coverage Results" MODIFIED="1493785287405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/evaluate" />
+    <SUITE FILE_PATH="coverage/entity2vector$eva_product.coverage" NAME="eva_product Coverage Results" MODIFIED="1493789075019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/evaluate" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -53,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_rating.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user_rating.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="51" />
+            <state relative-caret-position="90">
+              <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -75,14 +75,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eva_product.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="eva_product.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entity/evaluate/eva_product.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="59" column="22" lean-forward="true" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+            <state relative-caret-position="306">
+              <caret line="93" column="44" lean-forward="true" selection-start-line="93" selection-start-column="44" selection-end-line="93" selection-end-column="44" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="npyio.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/numpy/lib/npyio.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="369" column="0" lean-forward="false" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,26 +102,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26520">
-              <caret line="1595" column="0" lean-forward="false" selection-start-line="1595" selection-start-column="0" selection-end-line="1595" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="brewer2mpl.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/brewer2mpl/brewer2mpl.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -235,8 +225,8 @@
         <option value="$PROJECT_DIR$/entity/experiment/visualize.py" />
         <option value="$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/tsne/__init__.py" />
         <option value="$PROJECT_DIR$/entity/experiment/category_classification.py" />
-        <option value="$PROJECT_DIR$/entity/experiment/user_rating.py" />
         <option value="$PROJECT_DIR$/entity/evaluate/eva_product.py" />
+        <option value="$PROJECT_DIR$/entity/experiment/user_rating.py" />
       </list>
     </option>
   </component>
@@ -369,7 +359,7 @@
       <recent name="$PROJECT_DIR$/model/experiment" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.eva_product">
+  <component name="RunManager" selected="Python.user_rating">
     <configuration default="false" name="category_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -683,8 +673,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.eva_product" />
-        <item index="1" class="java.lang.String" itemvalue="Python.user_rating" />
+        <item index="0" class="java.lang.String" itemvalue="Python.user_rating" />
+        <item index="1" class="java.lang.String" itemvalue="Python.eva_product" />
         <item index="2" class="java.lang.String" itemvalue="Python.category_classification" />
         <item index="3" class="java.lang.String" itemvalue="Python.eva_dimension" />
         <item index="4" class="java.lang.String" itemvalue="Python.export_embedding_from_checkpoint" />
@@ -838,7 +828,14 @@
       <option name="project" value="LOCAL" />
       <updated>1493784711017</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="finish visualization">
+      <created>1493785345040</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1493785345040</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -971,7 +968,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="85" />
+      <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -980,13 +977,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Data/yelp/output/raw_review_restaurant_dictioary.json.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2358252">
-          <caret line="87728" column="0" lean-forward="false" selection-start-line="87728" selection-start-column="0" selection-end-line="87728" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/experiment/category_classification.py" />
     <entry file="file://$PROJECT_DIR$/model/model/layers.py" />
     <entry file="file://$PROJECT_DIR$/model/__init__.py" />
@@ -1259,22 +1249,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
+    <entry file="file://$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="175">
+          <caret line="369" column="0" lean-forward="false" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/entity/evaluate/eva_product.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="59" column="22" lean-forward="true" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        <state relative-caret-position="306">
+          <caret line="93" column="44" lean-forward="true" selection-start-line="93" selection-start-column="44" selection-end-line="93" selection-end-column="44" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

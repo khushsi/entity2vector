@@ -4,7 +4,7 @@ from gensim.models import KeyedVectors
 import numpy as np
 import os
 
-flag = "attribute-argumented_model.freq=100"
+flag = "doc2vec_model.freq=100"
 conf = Config(flag, "tag" , 200)
 
 if not os.path.exists(conf.path_word_w2c) and not os.path.exists(conf.path_doc_w2c):
@@ -71,8 +71,8 @@ for idx, prod in enumerate(dp.idx2prod):
 describe_model = np.load(conf.path_model_npy + ".npy")
 word_embed = describe_model[0]
 prod_embed = describe_model[1]
-transfer_w = describe_model[2]
-transfer_b = describe_model[3]
+# transfer_w = describe_model[2]
+# transfer_b = describe_model[3]
 
 
 # test doc
