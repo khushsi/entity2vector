@@ -21,7 +21,7 @@ with tf.device('/cpu:0'):
     args = sys.argv
     if len(args) <= 10:
         # args = [args[0], "ntm_sigmoid_addneg", "prod", "200", "5"]
-        args = [args[0], "doc2vec_sigmoid_addneg", "prod", "200", "5"]
+        args = [args[0], "ntm_model.freq=100.word=22548.lr=0.01", "prod", "200", "5"]
     print(args)
     flag = args[1]
     n_processer = int(args[4])
@@ -31,7 +31,7 @@ with tf.device('/cpu:0'):
     print('Start loading data')
     dp = DataProvider(conf)
     print('Data load complete')
-    model, word_embed, item_embed = build_ntm_model(dp)
+    model, word_embed, item_embed = build_ntm_model(conf, dp)
     print('Start loading model weights')
     model.load_weights(conf.path_checkpoint)
     print('Loading model weights complete')

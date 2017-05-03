@@ -70,9 +70,12 @@ class Config:
 
         self.path_gensim_dict = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.dict" % self.path_gensim_tf
         self.path_gensim_corpus = home + "/Data/yelp/output/gensim_yelp_review_freq=%d.corpus" % self.path_gensim_tf
-
+        # Gensim LDA
         self.lda_model_path = home + '/Data/yelp/model/lda/yelp_restaurant_review.lda'
         self.path_lda_doc_vector = home + '/Data/yelp/model/lda/yelp_10class_doc-lda_vectors.pkl'
+        # Gensim TfIdf
+        self.tfidf_model_path = home + '/Data/yelp/model/tfidf/yelp_restaurant_review.tfidf'
+        self.path_tfidf_doc_vector = home + '/Data/yelp/model/tfidf/yelp_10class_doc-tfidf_vectors.pkl'
 
         # for model
         self.dim_word = 200
@@ -88,7 +91,7 @@ class Config:
         self.path_npy = "".join([home, "/Data/yelp/model/npy/"])
         if not os.path.exists(os.path.dirname(self.path_npy)):
             os.makedirs(os.path.dirname(self.path_npy))
-        self.batch_size = 100000
+        self.batch_size = 300000
         self.n_epoch = 500
         # self.sample_per_epoch = 19135900
         self.sample_per_epoch = 12500000

@@ -21,7 +21,7 @@ import tensorflow as tf
 #import sys
 #sys.stdout = open(conf.path_log, "w")
 
-def build_ntm_model(dp):
+def build_ntm_model(conf, dp):
     n_terms = len(dp.idx2word)
     word_embed_data = np.array(dp.word_embed)
 

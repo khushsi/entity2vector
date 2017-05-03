@@ -9,13 +9,19 @@ import numpy as np
 import sklearn
 
 # import matplotlib.pyplot as plt
+from gensim.models import TfidfModel
+
 from entity.config import Config
 from entity.data import DataProvider
 
 from gensim.models.ldamodel import LdaModel
 from gensim import corpora
-
 from experiment.gensim_data import load_review_text
+
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from tsne import bh_sne
+import brewer2mpl
 
 __author__ = "Rui Meng"
 __email__ = "rui.meng@pitt.edu"
@@ -77,8 +83,99 @@ def prepare_10class_dataset(dp, xy_path):
 
     return X_idx, business_idx, Y, Y_name, Y_original
 
-model_name = 'doc2vec' # lda, ntm, doc2vec
-model_dirs = {'lda':'ntm_model.freq=100.word=22548.lr=0.01', 'ntm':'ntm_model.freq=100.word=22548.lr=0.01', 'doc2vec':'doc2vec_model.freq=100'}
+
+def classify(X_train, Y_train, X_test, Y_test):
+    from sklearn import svm
+
+    clf = svm.LinearSVC(C = 1.0, class_weight = None, dual = True, fit_intercept = True,
+    intercept_scaling = 1, loss = 'squared_hinge', max_iter = 1000,
+    multi_class = 'ovr', penalty = 'l2', random_state = None, tol = 0.0001,
+    verbose = 0)
+
+    clf.fit(X_train, Y_train)
+    Y_pred = clf.predict(X_test)
+
+    f_micro = sklearn.metrics.f1_score(Y_test, Y_pred, average='micro')
+    p_micro = sklearn.metrics.precision_score(Y_test, Y_pred, average='micro')
+    r_micro = sklearn.metrics.recall_score(Y_test, Y_pred, average='micro')
+
+    f_macro = sklearn.metrics.f1_score(Y_test, Y_pred, average='macro')
+    p_macro = sklearn.metrics.precision_score(Y_test, Y_pred, average='macro')
+    r_macro = sklearn.metrics.recall_score(Y_test, Y_pred, average='macro')
+
+    accuracy = sklearn.metrics.accuracy_score(Y_test, Y_pred)
+
+    print('Accuracy=%f' % accuracy)
+
+    print('*' * 10 + ' Micro Score ' + '*' * 10)
+    print('p=%f' % p_micro)
+    print('r=%f' % r_micro)
+    print('f-score=%f' % f_micro)
+
+    print('*' * 10 + ' Macro Score ' + '*' * 10)
+    print('p=%f' % p_macro)
+    print('r=%f' % r_macro)
+    print('f-score=%f' % f_macro)
+
+
+def visualize(x_data, y_data, y_name):
+    # convert image data to float64 matrix. float64 is need for bh_sne
+    x_data = np.asarray(x_data).astype('float64')
+    y_data = np.asarray(y_data).astype('int')
+    y_name = np.asarray(y_name)
+    x_data = x_data.reshape((x_data.shape[0], -1))
+
+    # perform t-SNE embedding
+    vis_data = bh_sne(x_data)
+
+    # plot the result
+    vis_x = vis_data[:, 0]
+    vis_y = vis_data[:, 1]
+
+    fig, ax = plt.subplots()
+
+    almost_black = '#262626'
+    # set2 = brewer2mpl.get_map('Set3', 'qualitative', 10).mpl_colors
+    set2 = plt.cm.Set3(np.linspace(0, 1, 10))
+
+    for class_i in range(10):
+        idx = np.where(y_data == class_i)[0]
+        # print(idx)
+        color = set2[class_i]
+        # print('label=%s' % y_name[y])
+        plt.scatter(vis_x[idx], vis_y[idx], label=y_name[class_i], alpha=0.9, edgecolor=almost_black, linewidth=0.15, facecolor=color)#s=0.5, cmap=plt.cm.get_cmap("jet", 10))
+    # plt.colorbar(ticks=range(10))
+    ax.legend(loc=1)
+    ax.grid(True)
+
+    plt.clim(-0.5, 9.5)
+    plt.show()
+
+model_name = 'attr' # lda, ntm, doc2vec, tfidf, attr
+model_dirs = {'lda':'ntm_model.freq=100.word=22548.lr=0.01', 'ntm':'ntm_model.freq=100.word=22548.lr=0.01', 'doc2vec':'doc2vec_model.freq=100', 'tfidf':'ntm_model.freq=100.word=22548.lr=0.01', 'attr':'attribute-argumented_model.freq=100'}
+
+
+def prepare_visualization():
+    data_sample_dict = {}
+    for x,y in zip(X,Y):
+        if len(data_sample_dict.get(y, [])) < 1000:
+            d = data_sample_dict.get(y, [])
+            d.append(x)
+            data_sample_dict[y] = d
+
+    Y_name_dict = {}
+    for i, n in enumerate(tags_of_interest):
+        Y_name_dict[i] = n
+
+    X_sample = []
+    Y_sample = []
+    Y_name_sample = []
+    for y, x_list in data_sample_dict.items():
+        for x in x_list:
+            X_sample.append(x)
+            Y_sample.append(y)
+            Y_name_sample.append(Y_name_dict[y])
+    return X_sample, Y_sample
 
 if __name__ == '__main__':
     print('Run experiment for %s' % model_name)
@@ -108,6 +205,8 @@ if __name__ == '__main__':
     if model_name == 'ntm':
         X = doc_embed[0][X_idx]
     elif model_name == 'doc2vec':
+        X = doc_embed[0][X_idx]
+    elif model_name == 'attr':
         X = doc_embed[0][X_idx]
     elif model_name == 'lda':
         if os.path.exists(conf.path_lda_doc_vector):
@@ -139,6 +238,44 @@ if __name__ == '__main__':
             print('Dumping LDA document vectors')
             with open(conf.path_lda_doc_vector, 'wb') as f:
                 pickle.dump(X, f)
+    elif model_name == 'tfidf':
+        if os.path.exists(conf.path_tfidf_doc_vector):
+            print('Loading TfIdf document vectors')
+            with open(conf.path_tfidf_doc_vector, 'rb') as f:
+                tfidf = pickle.load(f)
+        else:
+            # get the doc_id in gensim corpus which correspond to the tags of interests
+            gensim_business_document_dict      = load_review_text(conf)
+            business_idx_dict           = {}
+            for idx, busi_idx in enumerate(gensim_business_document_dict.keys()):
+                business_idx_dict[busi_idx] = idx
+            gensim_interested_idx      = [business_idx_dict[busi_id] for busi_id in business_idx]
+            corpus = corpora.MmCorpus(conf.path_gensim_corpus)
+            gensim_interested_docs = corpus[gensim_interested_idx]
+            dictionary = corpora.Dictionary.load_from_text(conf.path_gensim_dict)
+
+            if os.path.exists(conf.tfidf_model_path):
+                print('Loading TfIdf models')
+                with open(conf.tfidf_model_path, 'rb') as f:
+                    tfidf = pickle.load(f)
+            else:
+                tfidf = TfidfModel(corpus, dictionary)
+                print('Dumping LDA document vectors')
+                with open(conf.tfidf_model_path, 'wb') as f:
+                    pickle.dump(tfidf, f)
+
+            # X = tfidf[gensim_interested_docs]
+            X = np.zeros((len(X_idx), len(tfidf.id2word)), dtype=float)
+            for idx, d in enumerate(gensim_interested_docs):
+                x = tfidf[d]
+                for i,v in x:
+                    X[idx][i] += v
+                if idx % 1000 == 0:
+                    print('Processing doc %d' % idx)
+
+            print('Dumping TfIdf document vectors')
+            with open(conf.path_tfidf_doc_vector, 'wb') as f:
+                pickle.dump(X, f)
 
     data_len = len(X_idx)
     cut_value = int(0.8 * data_len)
@@ -147,65 +284,9 @@ if __name__ == '__main__':
 
     X_test = X[cut_value:]
     Y_test = Y[cut_value:]
-    ###################### Rum SVM and evaluation #########################
-    from sklearn import svm
+    ###################### Run SVM and evaluation #########################
+    # classify(X_train, Y_train, X_test, Y_test)
 
-    clf = svm.LinearSVC(C = 1.0, class_weight = None, dual = True, fit_intercept = True,
-    intercept_scaling = 1, loss = 'squared_hinge', max_iter = 1000,
-    multi_class = 'ovr', penalty = 'l2', random_state = None, tol = 0.0001,
-    verbose = 0)
-
-    clf.fit(X_train, Y_train)
-    Y_pred = clf.predict(X_test)
-
-    f_micro = sklearn.metrics.f1_score(Y_test, Y_pred, average='micro')
-    p_micro = sklearn.metrics.precision_score(Y_test, Y_pred, average='micro')
-    r_micro = sklearn.metrics.recall_score(Y_test, Y_pred, average='micro')
-
-    f_macro = sklearn.metrics.f1_score(Y_test, Y_pred, average='macro')
-    p_macro = sklearn.metrics.precision_score(Y_test, Y_pred, average='macro')
-    r_macro = sklearn.metrics.recall_score(Y_test, Y_pred, average='macro')
-
-
-    accuracy = sklearn.metrics.accuracy_score(Y_test, Y_pred)
-
-    print('Accuracy=%f' % accuracy)
-
-    print('*' * 10 + ' Micro Score ' + '*' * 10)
-    print('p=%f' % p_micro)
-    print('r=%f' % r_micro)
-    print('f-score=%f' % f_micro)
-
-    print('*' * 10 + ' Macro Score ' + '*' * 10)
-    print('p=%f' % p_macro)
-    print('r=%f' % r_macro)
-    print('f-score=%f' % f_macro)
-
-    precision, recall, thresholds = sklearn.metrics.precision_recall_curve(Y_test, Y_pred)
-
-    # Plot Precision-Recall curve
-    # lw = 2
-    # plt.clf()
-    # plt.plot(recall[0], precision[0], lw=lw, color='navy',
-    #          label='Precision-Recall curve')
-    # plt.xlabel('Recall')
-    # plt.ylabel('Precision')
-    # plt.ylim([0.0, 1.05])
-    # plt.xlim([0.0, 1.0])
-    # plt.title('Precision-Recall example: AUC={0:0.2f}'.format(precision))
-    # plt.legend(loc="lower left")
-    # plt.show()
-    #
-    # # Plot Precision-Recall curve for each class
-    # plt.clf()
-    # plt.plot(recall, precision, color='gold', lw=lw,
-    #          label='micro-average Precision-recall curve (area = {0:0.2f})'
-    #                ''.format(precision))
-    #
-    # plt.xlim([0.0, 1.0])
-    # plt.ylim([0.0, 1.05])
-    # plt.xlabel('Recall')
-    # plt.ylabel('Precision')
-    # plt.title('Extension of Precision-Recall curve to multi-class')
-    # plt.legend(loc="lower right")
-    # plt.show()
+    ###################### Run Visualization #########################
+    X_sample, Y_sample = prepare_visualization()
+    visualize(X_sample, Y_sample, tags_of_interest)
