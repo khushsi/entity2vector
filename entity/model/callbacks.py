@@ -15,7 +15,8 @@ class my_checker_point(Callback):
         np.save(self.conf.path_doc_npy, self.doc_embed.get_weights())
         np.save(self.conf.path_word_npy, self.word_embed.get_weights())
         np.save(self.conf.path_model_npy, self.model.get_weights())
-        np.save(self.conf.path_tag_npy, self.tag_embed.get_weights())
+        if self.tag_embed.get_weights()!=None:
+            np.save(self.conf.path_tag_npy, self.tag_embed.get_weights())
 
 class my_value_checker(Callback):
     def __init__(self, models):

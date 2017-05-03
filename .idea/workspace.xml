@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="747f4ef7-b06c-4f0d-ad1d-516743812575" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/entity2vector.iml" afterPath="$PROJECT_DIR$/.idea/entity2vector.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entity/model/callbacks.py" afterPath="$PROJECT_DIR$/entity/model/callbacks.py" />
     </list>
     <ignored path="entity2vector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,8 +16,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/entity2vector$text_process.coverage" NAME="text_process Coverage Results" MODIFIED="1493151787275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/preprocess/util" />
-    <SUITE FILE_PATH="coverage/entity2vector$model_e2v_ntm.coverage" NAME="model_e2v_ntm Coverage Results" MODIFIED="1493691214988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$model_e2v_doc2vec.coverage" NAME="model_e2v_doc2vec Coverage Results" MODIFIED="1493764037089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity" />
+    <SUITE FILE_PATH="coverage/entity2vector$model_e2v_ntm.coverage" NAME="model_e2v_ntm Coverage Results" MODIFIED="1493847639132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity" />
     <SUITE FILE_PATH="coverage/entity2vector$user_rating.coverage" NAME="user_rating Coverage Results" MODIFIED="1493791661936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
     <SUITE FILE_PATH="coverage/entity2vector$eva_dimension.coverage" NAME="eva_dimension Coverage Results" MODIFIED="1493833392925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/evaluate" />
     <SUITE FILE_PATH="coverage/entity2vector$data.coverage" NAME="data Coverage Results" MODIFIED="1493105206082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
@@ -88,14 +87,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model_e2v_ntm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="model_e2v_ntm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entity/model_e2v_ntm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="122" column="30" lean-forward="false" selection-start-line="122" selection-start-column="30" selection-end-line="122" selection-end-column="30" />
+            <state relative-caret-position="256">
+              <caret line="94" column="48" lean-forward="false" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
               <folding>
                 <element signature="e#27#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="callbacks.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/entity/model/callbacks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" column="69" lean-forward="true" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -193,7 +202,6 @@
         <option value="$PROJECT_DIR$/model/model_e2v_doc2vec.py" />
         <option value="$PROJECT_DIR$/entity/experiment/gensim_data.py" />
         <option value="$PROJECT_DIR$/entity/experiment/lda_train.py" />
-        <option value="$PROJECT_DIR$/entity/model/callbacks.py" />
         <option value="$PROJECT_DIR$/entity/model_e2v_doc2vec.py" />
         <option value="$PROJECT_DIR$/entity/data.py" />
         <option value="$PROJECT_DIR$/entity/beta/data.py" />
@@ -208,6 +216,7 @@
         <option value="$PROJECT_DIR$/entity/experiment/user_rating.py" />
         <option value="$PROJECT_DIR$/entity/experiment/category_classification.py" />
         <option value="$PROJECT_DIR$/entity/model_e2v_ntm.py" />
+        <option value="$PROJECT_DIR$/entity/model/callbacks.py" />
       </list>
     </option>
   </component>
@@ -296,6 +305,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity2vector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity2vector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="experiment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -355,7 +382,7 @@
       <recent name="$PROJECT_DIR$/model/experiment" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.eva_dimension">
+  <component name="RunManager" selected="Python.model_e2v_ntm">
     <configuration default="false" name="category_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -392,24 +419,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="export_embedding_from_checkpoint" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/entity/experiment" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="entity2vector" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/entity/experiment/export_embedding_from_checkpoint.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="user_rating" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -442,6 +451,24 @@
       <module name="entity2vector" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/entity/evaluate/eva_product.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_e2v_ntm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/entity" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="entity2vector" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/entity/model_e2v_ntm.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -663,17 +690,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.category_classification" />
       <item index="1" class="java.lang.String" itemvalue="Python.eva_dimension" />
-      <item index="2" class="java.lang.String" itemvalue="Python.export_embedding_from_checkpoint" />
-      <item index="3" class="java.lang.String" itemvalue="Python.user_rating" />
-      <item index="4" class="java.lang.String" itemvalue="Python.eva_product" />
+      <item index="2" class="java.lang.String" itemvalue="Python.user_rating" />
+      <item index="3" class="java.lang.String" itemvalue="Python.eva_product" />
+      <item index="4" class="java.lang.String" itemvalue="Python.model_e2v_ntm" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.eva_dimension" />
-        <item index="1" class="java.lang.String" itemvalue="Python.category_classification" />
-        <item index="2" class="java.lang.String" itemvalue="Python.user_rating" />
-        <item index="3" class="java.lang.String" itemvalue="Python.eva_product" />
-        <item index="4" class="java.lang.String" itemvalue="Python.export_embedding_from_checkpoint" />
+        <item index="0" class="java.lang.String" itemvalue="Python.model_e2v_ntm" />
+        <item index="1" class="java.lang.String" itemvalue="Python.eva_dimension" />
+        <item index="2" class="java.lang.String" itemvalue="Python.category_classification" />
+        <item index="3" class="java.lang.String" itemvalue="Python.user_rating" />
+        <item index="4" class="java.lang.String" itemvalue="Python.eva_product" />
       </list>
     </recent_temporary>
   </component>
@@ -866,7 +893,14 @@
       <option name="project" value="LOCAL" />
       <updated>1493847097841</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="visualize outputs">
+      <created>1493847146452</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1493847146452</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1107,17 +1141,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entity/model/callbacks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/keras/callbacks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-121">
           <caret line="346" column="8" lean-forward="false" selection-start-line="346" selection-start-column="8" selection-end-line="346" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,11 +1331,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/entity/model_e2v_ntm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="122" column="30" lean-forward="false" selection-start-line="122" selection-start-column="30" selection-end-line="122" selection-end-column="30" />
+        <state relative-caret-position="256">
+          <caret line="94" column="48" lean-forward="false" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
           <folding>
             <element signature="e#27#36#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entity/model/callbacks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="69" lean-forward="true" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
