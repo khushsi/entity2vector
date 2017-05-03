@@ -16,16 +16,16 @@ import json
 from collections import OrderedDict
 import time
 import datetime
-from model.data import DataProvider
-from model.config import Config
+from entity.data import DataProvider
+from entity.config import Config
 
 home = os.environ["HOME"]
 
 class Exp():
 
     def __init__(self, k = 10):
-        flag = "prodx_sigmoid_softmax"
-        conf = Config(flag, "prod", 200)
+        flag = "attribute-argumented_model.freq=100"
+        conf = Config(flag, "full", 200)
         print(flag)
         print(k)
 

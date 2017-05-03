@@ -1,10 +1,10 @@
 from config import Config
-from model.data import DataProvider
+from entity.data import DataProvider
 from gensim.models import KeyedVectors
 import numpy as np
 import os
 
-flag = "prodx_sigmoid_softmax"
+flag = "attribute-argumented_model.freq=100"
 conf = Config(flag, "tag" , 200)
 
 if not os.path.exists(conf.path_word_w2c) and not os.path.exists(conf.path_doc_w2c):
