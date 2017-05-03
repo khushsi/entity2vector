@@ -118,7 +118,7 @@ if __name__ == '__main__':
     with tf.device('/gpu:0'):
         # get data
         dp = DataProvider(conf)
-        model, word_embed, item_embed = build_ntm_model(dp)
+        model, word_embed, item_embed = build_ntm_model(conf, dp)
 
         print(model.summary())
 
