@@ -34,8 +34,8 @@ word_embed = model.weights[3]
 init_op = tf.initialize_all_variables()
 sess = tf.InteractiveSession()
 sess.run(init_op)
-# weight = np.dot(word_embed, transfer_w)
-weight = (tf.matmul(word_embed, transfer_w) + transfer_b).eval()
+weight = np.dot(word_embed.eval(), transfer_w.eval())
+# weight = (tf.dot(word_embed, transfer_w) + transfer_b).eval()
 weight = logistic.cdf(weight)
 
 for topic_id in range(conf.dim_item):
