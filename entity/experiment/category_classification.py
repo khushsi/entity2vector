@@ -151,7 +151,7 @@ def visualize(x_data, y_data, y_name):
     plt.clim(-0.5, 9.5)
     plt.show()
 
-model_name = 'attr' # lda, ntm, doc2vec, tfidf, attr
+model_name = 'ntm' # lda, ntm, doc2vec, tfidf, attr
 model_dirs = {'lda':'ntm_model.freq=100.word=22548.lr=0.01', 'ntm':'ntm_model.freq=100.word=22548.lr=0.01', 'doc2vec':'doc2vec_model.freq=100', 'tfidf':'ntm_model.freq=100.word=22548.lr=0.01', 'attr':'attribute-argumented_model.freq=100'}
 
 
