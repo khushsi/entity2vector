@@ -24,7 +24,7 @@ home = os.environ["HOME"]
 class Exp():
 
     def __init__(self, k = 10):
-        flag = "attribute-argumented_model.freq=100"
+        flag = "doc2vec_model.freq=100"
         conf = Config(flag, "full", 200)
         print(flag)
         print(k)
@@ -175,7 +175,7 @@ class Exp():
 
 
 if __name__ == '__main__':
-    exp = Exp(k=5)
+    exp = Exp(k=7)
     exp.split()
     exp.initlize()
     exp.test()

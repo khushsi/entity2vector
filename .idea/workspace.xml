@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="747f4ef7-b06c-4f0d-ad1d-516743812575" name="Default" comment="">
+    <list default="true" id="747f4ef7-b06c-4f0d-ad1d-516743812575" name="Default" comment="visualize outputs">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entity/model/callbacks.py" afterPath="$PROJECT_DIR$/entity/model/callbacks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entity/experiment/user_rating.py" afterPath="$PROJECT_DIR$/entity/experiment/user_rating.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result.ods" afterPath="$PROJECT_DIR$/result.ods" />
     </list>
     <ignored path="entity2vector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +19,7 @@
     <SUITE FILE_PATH="coverage/entity2vector$text_process.coverage" NAME="text_process Coverage Results" MODIFIED="1493151787275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/preprocess/util" />
     <SUITE FILE_PATH="coverage/entity2vector$model_e2v_doc2vec.coverage" NAME="model_e2v_doc2vec Coverage Results" MODIFIED="1493764037089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity" />
     <SUITE FILE_PATH="coverage/entity2vector$model_e2v_ntm.coverage" NAME="model_e2v_ntm Coverage Results" MODIFIED="1493847639132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity" />
-    <SUITE FILE_PATH="coverage/entity2vector$user_rating.coverage" NAME="user_rating Coverage Results" MODIFIED="1493791661936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
+    <SUITE FILE_PATH="coverage/entity2vector$user_rating.coverage" NAME="user_rating Coverage Results" MODIFIED="1493956957276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/experiment" />
     <SUITE FILE_PATH="coverage/entity2vector$eva_dimension.coverage" NAME="eva_dimension Coverage Results" MODIFIED="1493833392925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entity/evaluate" />
     <SUITE FILE_PATH="coverage/entity2vector$data.coverage" NAME="data Coverage Results" MODIFIED="1493105206082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/entity2vector$process_data.coverage" NAME="process_data Coverage Results" MODIFIED="1493242724439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/archive/preprocess/app_yelp" />
@@ -52,14 +53,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_rating.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user_rating.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="83" column="36" lean-forward="false" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+            <state relative-caret-position="358">
+              <caret line="177" column="18" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="177" selection-end-column="18" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1493791661928" expanded="true" signature="6198:6267" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,7 +99,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="callbacks.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="callbacks.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entity/model/callbacks.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -213,10 +213,10 @@
         <option value="$PROJECT_DIR$/entity/experiment/visualize.py" />
         <option value="$PROJECT_DIR$/../../anaconda3/lib/python3.5/site-packages/tsne/__init__.py" />
         <option value="$PROJECT_DIR$/entity/evaluate/eva_product.py" />
-        <option value="$PROJECT_DIR$/entity/experiment/user_rating.py" />
         <option value="$PROJECT_DIR$/entity/experiment/category_classification.py" />
         <option value="$PROJECT_DIR$/entity/model_e2v_ntm.py" />
         <option value="$PROJECT_DIR$/entity/model/callbacks.py" />
+        <option value="$PROJECT_DIR$/entity/experiment/user_rating.py" />
       </list>
     </option>
   </component>
@@ -382,7 +382,7 @@
       <recent name="$PROJECT_DIR$/model/experiment" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.model_e2v_ntm">
+  <component name="RunManager" selected="Python.user_rating">
     <configuration default="false" name="category_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -696,10 +696,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.model_e2v_ntm" />
-        <item index="1" class="java.lang.String" itemvalue="Python.eva_dimension" />
-        <item index="2" class="java.lang.String" itemvalue="Python.category_classification" />
-        <item index="3" class="java.lang.String" itemvalue="Python.user_rating" />
+        <item index="0" class="java.lang.String" itemvalue="Python.user_rating" />
+        <item index="1" class="java.lang.String" itemvalue="Python.model_e2v_ntm" />
+        <item index="2" class="java.lang.String" itemvalue="Python.eva_dimension" />
+        <item index="3" class="java.lang.String" itemvalue="Python.category_classification" />
         <item index="4" class="java.lang.String" itemvalue="Python.eva_product" />
       </list>
     </recent_temporary>
@@ -907,7 +907,14 @@
       <option name="project" value="LOCAL" />
       <updated>1493848719352</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="visualize outputs">
+      <created>1493849395211</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1493849395211</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1279,17 +1286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="83" column="36" lean-forward="false" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1493791661928" expanded="true" signature="6198:6267" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entity/experiment/export_embedding_from_checkpoint.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
@@ -1351,6 +1347,16 @@
         <state relative-caret-position="255">
           <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entity/experiment/user_rating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="177" column="18" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="177" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
