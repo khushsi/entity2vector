@@ -92,7 +92,7 @@ def build_ntm_model(conf, dp):
 if __name__ == '__main__':
     args = sys.argv
     if len(args) <= 10:
-        args = [args[0], "prodx_sigmoid_softmax.lr=0.01", "prod", "200", "5"]
+        args = [args[0], "ntm_model.freq=100.word=22548", "prod", "200", "5"]
     print(args)
     flag = args[1]
     n_processer = int(args[4])

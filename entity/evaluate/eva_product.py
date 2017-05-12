@@ -4,7 +4,7 @@ from gensim.models import KeyedVectors
 import numpy as np
 import os
 
-flag = "doc2vec_model.freq=100"
+flag = "ntm_model.new_trained.freq=100.word=22548"
 conf = Config(flag, "tag" , 200)
 
 if not os.path.exists(conf.path_word_w2c) and not os.path.exists(conf.path_doc_w2c):

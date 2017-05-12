@@ -24,7 +24,7 @@ home = os.environ["HOME"]
 class Exp():
 
     def __init__(self, k = 10):
-        flag = "doc2vec_model.freq=100"
+        flag = "ntm_model.new_trained.freq=100.word=22548"
         conf = Config(flag, "full", 200)
         print(flag)
         print(k)

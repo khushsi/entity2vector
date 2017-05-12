@@ -7,7 +7,7 @@ from scipy.stats import logistic
 from entity.model_e2v_ntm import build_ntm_model
 import tensorflow as tf
 
-flag = "ntm_model.freq=100.word=22548.lr=0.01"
+flag = "ntm_model.new_trained.freq=100.word=22548"
 conf = Config(flag, "prod" , 200)
 
 # wrong!
