@@ -1,4 +1,4 @@
-Reset the home path to **YOUR_DATA_DIRECTORY** at the beginning of each code if necessary. The major codes  folder **archive/** contains old codes, and is not often used here.
+Reset the home path to **YOUR_DATA_DIRECTORY** at the beginning of each code if necessary. The major codes are placed in folder **code/**, folder **archive/** contains some old codes.
 
 Dependency: NLTK, TensorFlow, Keras ect.
 1. Download the yelp challenge dataset, and I suggest to put it to /User/yourname/Data/yelp/ (Mac) or /home/yourname/Data/yelp/ (Linux)
